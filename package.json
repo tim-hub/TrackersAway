@@ -1,0 +1,22 @@
+{
+  "name": "clean-hosts-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "npm run build && electron ./dist/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "tslint": "^5.18.0"
+  },
+  "dependencies": {
+    "@types/node": "^12.6.4"
+  }
+}
