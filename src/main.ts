@@ -5,7 +5,7 @@ import * as path from "path";
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-function createWindow() {
+const createWindow = () => {
   // Create the browser window.
   win = new BrowserWindow({
     height: 600,
@@ -28,7 +28,7 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
-}
+};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
