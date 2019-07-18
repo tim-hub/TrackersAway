@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require("electron");
-import * as path from "path";
+// import { join } from "path";
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,7 +16,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  win.loadFile(path.join(__dirname, "../index.html"));
+  win.loadFile("../index.html");
 
   // Open the DevTools.
   win.webContents.openDevTools();
