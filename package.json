@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "electron ./src/main.ts"
+    "start": "electron --require esm ./src/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "electron": "5.0.7",
     "tslint": "^5.18.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron-reload": "^1.4.1",
+    "esm": "^3.2.25"
+  }
 }

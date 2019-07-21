@@ -1,5 +1,12 @@
-const { app, BrowserWindow } = require("electron");
-// import { join } from "path";
+import { app, BrowserWindow } from "electron";
+// import * as path from "path";
+require("electron-reload")(
+  __dirname
+  //     {
+  //   electron: "/usr/local/bin/electron",
+  //   hardResetMethod: "exit"
+  // }
+);
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -15,8 +22,8 @@ const createWindow = () => {
     }
   });
 
-  // and load the index.html of the app.
-  win.loadFile("../index.html");
+  // and load the index2.html of the app.
+  win.loadFile("../index2.html");
 
   // Open the DevTools.
   win.webContents.openDevTools();
