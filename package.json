@@ -12,11 +12,13 @@
   "author": "",
   "license": "",
   "devDependencies": {
+    "babel-preset-electron": "^1.4.15",
     "electron": "5.0.7",
     "tslint": "^5.18.0"
   },
   "dependencies": {
     "electron-reload": "^1.4.1",
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "typescript": "^3.5.3"
   }
 }
