@@ -6,20 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "electron --require esm ./src/main.ts"
+    "start": "electron ./src/main.ts"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "devDependencies": {
-    "electron": "5.0.7",
-    "tslint": "^5.18.0",
     "electron-reload": "^1.4.1",
-    "typescript": "^3.5.3"
+    "tslint": "^5.18.0"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "axios": "^0.19.0",
+    "electron": "^5.0.7",
     "esm": "^3.2.25",
-    "sudo-prompt": "^9.0.0"
+    "sudo-prompt": "^9.0.0",
+    "typescript": "^3.5.3"
   }
 }

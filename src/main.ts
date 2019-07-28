@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+const { app, BrowserWindow } = require("electron");
 // import * as path from "path";
 require("electron-reload")(
   __dirname
@@ -10,9 +10,9 @@ require("electron-reload")(
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win;
+let win: any;
 
-const createWindow = () => {
+const createWindow = (): void => {
   // Create the browser window.
   win = new BrowserWindow({
     height: 600,
