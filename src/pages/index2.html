@@ -2,17 +2,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clean HostsX</title>
+    <link rel="stylesheet" href="../static/bulma.min.css">
+    <script defer src="../static/fa.min.js"></script>
+    <link rel="stylesheet" href="../static/main.css">
 </head>
 <body>
-<h1>Hello World!</h1>
-<h1>Hello World!!</h1>
-We are using node <script>document.write(process.versions.node)</script>,
-Chrome <script>document.write(process.versions.chrome)</script>,
-and Electron <script>document.write(process.versions.electron)</script>.
-<button id="new-window">Load Hosts</button>
+<section class="section">
+    <div class="container">
+        <h1 class="title is-1 is-spaced has-text-centered has-text-primary">Clean HostsX</h1>
+        <h3 class="subtitle is-3 has-text-centered ">
+            <span class="icon has-text-info">
+  <i class="fas fa-info-circle"></i>
+</span>
+            The best Hosts Manager for Mac OS</h3>
+        <button class="button is-primary is-center" id="new-window">Load Hosts</button>
+    </div>
+</section>
 </body>
-
 <script>
   require("../renderer.js");
 </script>

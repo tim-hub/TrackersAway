@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require("electron");
 import * as path from "path";
+require('dotenv').config();
 require("electron-reload")(
   __dirname
   //     {
@@ -26,7 +27,10 @@ const createWindow = () => {
   win.loadFile(path.join(__dirname, "./pages/index2.html"));
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  if (process.env.LOG_LEVEL === 'debug'){
+    win.webContents.openDevTools();
+  }
+
 
   // Emitted when the window is closed.
   win.on("closed", () => {
