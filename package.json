@@ -18,8 +18,11 @@
   "dependencies": {
     "@types/axios": "^0.14.0",
     "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
     "electron": "^5.0.7",
     "esm": "^3.2.25",
+    "pino": "^5.13.1",
+    "pino-pretty": "^3.2.0",
     "sudo-prompt": "^9.0.0",
     "typescript": "^3.5.3"
   }
