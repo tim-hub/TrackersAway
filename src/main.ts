@@ -20,7 +20,8 @@ const createWindow = () => {
     width: 800,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
+    resizable: false
   });
 
   // and load the index2.html of the app.
