@@ -25,7 +25,7 @@ const createWindow = () => {
   });
 
   // and load the index2.html of the app.
-  win.loadFile(path.join(__dirname, "./pages/index2.html"));
+  win.loadFile(path.join(__dirname, "./src/pages/index2.html"));
 
   // Open the DevTools.
   if (process.env.LOG_LEVEL === 'debug'){

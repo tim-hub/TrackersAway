@@ -2,11 +2,11 @@
   "name": "clean-hosts-node",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.ts",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "electron -r esm ./src/main.ts"
+    "start": "electron -r esm main.ts"
   },
   "keywords": [],
   "author": "",
