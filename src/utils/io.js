@@ -37,7 +37,7 @@ const writeToFile = async (content, hostsPath='/etc/hosts')=>{
   };
 
   return new Promise((resolve, reject)=>{
-    sudo.exec(`utils/fs-writer/index-macos '${content}' '${hostsPath}'`,
+    sudo.exec(`echo  '${content}' >> '${hostsPath}'`,
       options,
       (error, stdout, stderr) => {
         if (error || stderr){

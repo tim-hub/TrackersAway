@@ -5,5 +5,5 @@ const btn = document.getElementById("new-window");
 
 btn.addEventListener("click", async (event) => {
   logger.debug("button clicked");
-  main('/opt/hosts');
+  main('/tmp/hosts');
 });
