@@ -4,4 +4,4 @@
 - clean hosts is also an hosts file manager
 
 ## Contribution
-- [contribute](/blob/master/CONTRIBUTING.md)
+- [contribute](/CONTRIBUTING.md)
