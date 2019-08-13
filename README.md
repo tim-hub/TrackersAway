@@ -1,6 +1,7 @@
-This is a basic electron typescript boilerplate,
+## Clean Hosts Ads Blocks
 
-- npm install -g electron typescript
-- npm link electron
-- npm link typescript
-- npm start
+- clean hosts is an ad blocker
+- clean hosts is also an hosts file manager
+
+## Contribution
+- [contribute](/CONTRIBUTION.md)
