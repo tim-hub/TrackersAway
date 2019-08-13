@@ -1,4 +1,4 @@
-const {addPermission, writeToFile, getLocalHosts, getHosts} = require("./utils/io");
+const {writeToFile, getLocalHosts, getHosts} = require("./utils/io");
 const {logger} = require("./utils/logger");
 
 const optPath = "/opt/hosts";
