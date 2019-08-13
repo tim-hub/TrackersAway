@@ -28,8 +28,8 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
   }catch (e) {
     logger.error(e);
   }
-  //
-  await addPermission();
+
+  // await addPermission(); // no need for using echo
   await writeToFile(remoteHosts.join('\n').trim(), hostsPath);
 };
 

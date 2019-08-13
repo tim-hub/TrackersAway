@@ -37,7 +37,7 @@ const writeToFile = async (content, hostsPath='/etc/hosts')=>{
   };
 
   return new Promise((resolve, reject)=>{
-    sudo.exec(`echo  '${content}' >> '${hostsPath}'`,
+    sudo.exec(`: > '${hostsPath}'  && echo -e '${content}' >> '${hostsPath}'`,
       options,
       (error, stdout, stderr) => {
         if (error || stderr){
