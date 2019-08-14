@@ -1,11 +1,19 @@
-const { createStore } = require('redux');
+const { createStore, combineReducers } = require('redux');
 
-const counter = (state = 0, action)=> {
+const CONSTANTS = {
+  TOGGLE_LOADING: 'TOGGLE_LOADING'
+};
+
+const defaultState ={
+  isLoading: false,
+};
+const ui = (state = defaultState, action)=> {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
+    case CONSTANTS.TOGGLE_LOADING:
+      console.log('change loading status'+action.isLoading + action.type);
+      return Object.assign(state, {isLoading: !action.isLoading});
     case 'DECREMENT':
-      return state - 1;
+      return state;
     default:
       return state
   }
@@ -13,6 +21,8 @@ const counter = (state = 0, action)=> {
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-let store = createStore(counter);
+let store = createStore( combineReducers({
+  ui: ui
+}));
 
-module.exports={store};
+module.exports={store, CONSTANTS};
