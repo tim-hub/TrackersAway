@@ -1,6 +1,6 @@
 const {logger} = require("./utils/logger");
 const {main} = require('./index');
-const {store, CONSTANTS} = require('./store');
+const {store, CONSTANTS, toggleLoading} = require('./store');
 
 var valueEl = document.getElementById('new-window')
 
@@ -21,10 +21,7 @@ const btn = document.getElementById("new-window");
 
 btn.addEventListener("click", async (event) => {
   logger.debug("button clicked");
-  // main('/tmp/hosts');
-  console.log(store.getState());
-  store.dispatch({
-    type: CONSTANTS.TOGGLE_LOADING,
-    isLoading: store.getState().ui.isLoading
-  })
+  toggleLoading();
+  await main('/tmp/hosts');
+  toggleLoading();
 });

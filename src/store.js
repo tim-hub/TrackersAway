@@ -25,4 +25,15 @@ let store = createStore( combineReducers({
   ui: ui
 }));
 
-module.exports={store, CONSTANTS};
+const toggleLoading = ()=>{
+  store.dispatch({
+    type: CONSTANTS.TOGGLE_LOADING,
+    isLoading: store.getState().ui.isLoading
+  });
+};
+
+module.exports={
+  store,
+  CONSTANTS,
+  toggleLoading
+};
