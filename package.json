@@ -23,6 +23,8 @@
     "esm": "^3.2.25",
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "redux": "^4.0.4",
     "sudo-prompt": "^9.0.0",
     "typescript": "^3.5.3"

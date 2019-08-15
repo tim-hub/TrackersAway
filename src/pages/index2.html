@@ -10,6 +10,9 @@
 </head>
 <body>
 <section class="section">
+    <div id="App">
+
+    </div>
     <div class="container">
         <h1 class="title is-1 is-spaced has-text-centered has-text-primary">Clean HostsX</h1>
         <h3 class="subtitle is-3 has-text-centered ">
@@ -88,31 +91,21 @@
                 </div>
                 <div class="level-right"></div>
             </div>
-            <div class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Modal title</p>
-                        <button class="delete" aria-label="close"></button>
-                    </header>
-                    <section class="modal-card-body">
-                        <!-- Content ... -->
-                        a
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success">Save changes</button>
-                        <button class="button">Cancel</button>
-                    </footer>
-                </div>
-            </div>
+
 
         </main>
     </div>
 </section>
+<!--load react-->
+<!--<script src="../static/react.min.js" crossorigin></script>-->
+<!--<script src="../static/react-dom.min.js" crossorigin></script>-->
 </body>
 
+
+<!--load electron render-->
 <script>
   require("../renderer.js");
+  require("../reactButton.js")
 </script>
 
 </html>
