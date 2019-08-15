@@ -2,11 +2,11 @@
   "name": "clean-hosts-node",
   "version": "1.0.0",
   "description": "",
-  "main": "src/main.ts",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "electron -r esm ./src/main.ts"
+    "start": "electron -r esm main.ts"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
     "esm": "^3.2.25",
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0",
+    "redux": "^4.0.4",
     "sudo-prompt": "^9.0.0",
     "typescript": "^3.5.3"
   }
