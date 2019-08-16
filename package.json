@@ -2,11 +2,15 @@
   "name": "clean-hosts-node",
   "version": "1.0.0",
   "description": "- clean hosts is an ad blocker - clean hosts is also an hosts file manager",
-  "main": "src/electron/main.ts",
+  "main": "src/electron/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "electron -r esm src/electron/main.ts"
+    "electron-start": "electron -r esm src/electron/main.js",
+    "start": "npm run react-dev > /dev/null | npm run electron-start",
+    "react-build": "npx webpack",
+    "react-dev": "npx webpack --watch",
+    "react-start": "npm run react-dev > /dev/null | npx serve -l 3003 src/electron/"
   },
   "keywords": [],
   "author": "",

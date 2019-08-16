@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clean HostsX</title>
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <script defer src="../static/fa.min.js"></script>
-    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="static/bulma.min.css">
+    <script defer src="static/fa.min.js"></script>
+    <link rel="stylesheet" href="static/main.css">
 </head>
 <body>
 <section class="section">
@@ -104,8 +104,11 @@
 
 <!--load electron render-->
 <script>
-  require("../renderer.js");
-  require("../reactButton.js")
+  // require("../renderer.js");
+  // require("../reactButton.js");
+  const React = require('react');
+  const ReactDOM= require('react-dom');
+  require("../../dist/main.js")
 </script>
 
 </html>

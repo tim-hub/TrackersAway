@@ -24,8 +24,8 @@ const createWindow = () => {
     resizable: false
   });
 
-  // and load the index2.html of the app.
-  win.loadFile(path.join(__dirname, "./index2.html"));
+  // and load the index.html of the app.
+  win.loadFile(path.join(__dirname, "./index.html"));
 
   // Open the DevTools.
   if (process.env.LOG_LEVEL === 'debug'){
