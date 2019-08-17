@@ -1,18 +1,6 @@
 import React from 'react';
-import {
-    Button,
-    Column,
-    Columns,
-    Container,
-    Icon,
-    Level,
-    LevelItem,
-    LevelLeft,
-    LevelRight,
-    Notification,
-    Subtitle,
-    Title
-} from 'bloomer';
+import { connect } from "react-redux";
+import {Button, Container, Icon, Level, LevelItem, LevelLeft, LevelRight, Subtitle, Title} from 'bloomer';
 
 
 const Home: React.FunctionComponent = (props) => {
@@ -28,9 +16,9 @@ const Home: React.FunctionComponent = (props) => {
                 <LevelLeft/>
                 <LevelItem>
                     <Button
+                        id="btn-loading"
                         isSize={'medium'}
                         isColor={'primary'}
-                        id="btn-loading"
                         onClick={async () => {
                             console.debug("button clicked");
                         }}
