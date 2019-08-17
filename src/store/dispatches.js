@@ -1,11 +1,11 @@
 const {store} = require("./store");
-const {toggleButton} = require("./actions");
+const {toggleLoading} = require("./actions");
 
-const toggleLoading = () => {
-  store.dispatch(toggleButton());
+const toggleLoadingDispatch = () => {
+  store.dispatch(toggleLoading());
 };
 
 module.exports={
   store,
-  toggleLoading
+  toggleLoading: toggleLoadingDispatch
 };

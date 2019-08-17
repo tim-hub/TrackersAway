@@ -8,7 +8,7 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     inline: true,
-    contentBase: resolve('./src/electronSrc'),
+    contentBase: resolve('./public'),
     // historyApiFallback: true,
     port: 3005
   },
@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts(x?)$/,
-        exclude: ['/node_modules/', resolve('./src/electronSrc/')],
+        exclude: [resolve('./src/electronSrc/')],
         use: [
           {
             loader: "ts-loader"
@@ -47,9 +47,9 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
-            options: {
-              includePaths: ['absolute/path/a', 'absolute/path/b'],
-            },
+            // options: {
+            //   includePaths: ['absolute/path/a', 'absolute/path/b'],
+            // },
           },
         ],
       },
@@ -64,9 +64,9 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
-            options: {
-              includePaths: ['absolute/path/a', 'absolute/path/b'],
-            },
+            // options: {
+            //   includePaths: ['absolute/path/a', 'absolute/path/b'],
+            // },
           },
         ],
       },
@@ -77,12 +77,12 @@ module.exports = {
   // assume a corresponding global variable exists and use that instead.
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM"
-  },
+  // externals: {
+  //   "react": "React",
+  //   "react-dom": "ReactDOM"
+  // },
   output: {
-    path: resolve('./dist'),
+    path: resolve('./public/dist'),
     filename: 'bundle.js'
   }
 };

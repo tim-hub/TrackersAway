@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clean HostsX</title>
     <script defer src="static/fa.min.js"></script>
-<!--    <link rel="stylesheet" href="../reactSrc/main.scss">-->
 </head>
 <body>
 <section class="section">
@@ -13,16 +12,16 @@
     </div>
 </section>
 </body>
-
-
+<!--<script src="../node_modules/react/index.js"></script>-->
+<!--<script src="../node_modules/react-dom/index.js"></script>-->
 <!--load electronSrc render-->
 <script>
   // react ui part
   const React = require('react');
   const ReactDOM= require('react-dom');
-  require("../../dist/bundle.js");
+  require("./dist/bundle.js");
   // electron part
-  require("../renderers/renderer.js");
+  require("../src/renderers/renderer.js");
 
 </script>
 

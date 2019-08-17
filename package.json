@@ -11,15 +11,16 @@
     "start": "npm run react-dev > /dev/null | npm run electron-start",
     "react-build": "npx webpack",
     "react-dev": "npx webpack --watch",
-    "react-start": "npm run react-dev > /dev/null | npx serve -l 3003 src/electronSrc/"
+    "react-start": "npm run react-dev > /dev/null | npx serve -l 3003 src/electronSrc/",
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
   "license": "Apache",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.8.5",
-    "@types/axios": "^0.14.0",
     "@types/react-redux": "^7.1.2",
     "css-loader": "^3.2.0",
     "electron-reload": "^1.4.1",
@@ -31,7 +32,8 @@
     "tslint": "^5.18.0",
     "typescript": "^3.5.3",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
     "axios": "^0.19.0",
