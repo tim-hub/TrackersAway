@@ -1,7 +1,5 @@
 const {writeToFile, getLocalHosts, getHosts} = require("./utils/io");
 const {logger} = require("./utils/logger");
-
-const optPath = "/opt/hosts";
 const hostsDefaultUrl =
   "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
 

@@ -4,7 +4,7 @@ require('dotenv').config();
 require("electron-reload")(
   __dirname
   //     {
-  //   electron: "/usr/local/bin/electron",
+  //   electronSrc: "/usr/local/bin/electronSrc",
   //   hardResetMethod: "exit"
   // }
 );

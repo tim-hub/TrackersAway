@@ -17,7 +17,13 @@
     },
     "noImplicitAny": true,
 //    "module": "commonjs",
-    "jsx": "react"
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "typeRoots": [
+      "src/typings",
+      "node_modules/@types"
+    ]
 
   },
   "exclude": [ "node_modules", "./test/**/*" ],

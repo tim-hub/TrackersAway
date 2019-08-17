@@ -1,8 +1,8 @@
 const {logger} = require("./utils/logger");
-const {main} = require('./index');
-const {store, CONSTANTS, toggleLoading} = require('./store');
+const {main} = require('./main');
+const {store, CONSTANTS, toggleLoading} = require('../store');
 
-var valueEl = document.getElementById('new-window')
+var valueEl = document.getElementById('btn-loading')
 
 function render() {
   valueEl.innerHTML = 'btn';
@@ -17,7 +17,7 @@ function render() {
 render();
 store.subscribe(render);
 
-const btn = document.getElementById("new-window");
+const btn = document.getElementById("btn-loading");
 
 btn.addEventListener("click", async (event) => {
   logger.debug("button clicked");
