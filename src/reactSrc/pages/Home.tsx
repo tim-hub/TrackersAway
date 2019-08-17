@@ -1,9 +1,14 @@
 import React from 'react';
-import { connect } from "react-redux";
 import {Button, Container, Icon, Level, LevelItem, LevelLeft, LevelRight, Subtitle, Title} from 'bloomer';
+import {connect} from "react-redux";
+import {toggleButton} from "../../store/actions";
+interface IProps  {
+    isLoading : boolean
+    toggleButton: ()=>void
+}
 
+const Home: React.FunctionComponent<IProps> = (props:IProps) => {
 
-const Home: React.FunctionComponent = (props) => {
     return (
         <Container>
             <Title>Clean HostsX</Title>
@@ -15,15 +20,19 @@ const Home: React.FunctionComponent = (props) => {
             <Level>
                 <LevelLeft/>
                 <LevelItem>
+                    <h1>loading?{props.isLoading? 'loading':'not loading'}</h1>
                     <Button
                         id="btn-loading"
                         isSize={'medium'}
-                        isColor={'primary'}
-                        onClick={async () => {
-                            console.debug("button clicked");
-                        }}
+                        isColor={props.isLoading ? 'primary': 'success'}
+                        // onClick={ () => {
+                        //     props.toggleButton();
+                        //     console.log(props.isLoading);
+                        //     console.log("button clicked from react");
+                        // }}
+                        isLoading={props.isLoading}
                     >
-                        <strong>Check for Updates & Apply</strong>
+                        {!props.isLoading && (<strong>Check for Updates & Apply</strong>)}
                     </Button>
                 </LevelItem>
                 <LevelRight/>
@@ -33,4 +42,18 @@ const Home: React.FunctionComponent = (props) => {
     );
 };
 
-export default Home;
+const mapStatesToProps = (state:any) =>{
+    return {
+        isLoading: state.ui.isLoading
+    };
+};
+
+const mapDispatchToProps = (dispatch:any) => {
+    return {
+        toggleButton: () => {
+            dispatch(toggleButton());
+        }
+    };
+};
+
+export default connect(mapStatesToProps, mapDispatchToProps)(Home);
