@@ -1,21 +1,21 @@
 const {resolve} = require('path');
 module.exports = {
-  context: resolve('./src/react/'),
-  entry: resolve('./src/react/index.tsx'),
+  context: resolve('./src/reactSrc/'),
+  entry: resolve('./src/reactSrc/index.tsx'),
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
   devServer: {
     inline: true,
-    contentBase: resolve('./src/electron'),
+    contentBase: resolve('./src/electronSrc'),
     // historyApiFallback: true,
     port: 3005
   },
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx"]
+    extensions: [".ts", ".tsx",".js"]
   },
 
 
@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts(x?)$/,
-        exclude: ['/node_modules/', resolve('./src/electron/')],
+        exclude: ['/node_modules/', resolve('./src/electronSrc/')],
         use: [
           {
             loader: "ts-loader"
@@ -49,6 +49,6 @@ module.exports = {
   },
   output: {
     path: resolve('./dist'),
-    filename: 'main.js.js'
+    filename: 'bundle.js'
   }
 };
