@@ -1,7 +1,26 @@
 const {store} = require("./store");
 const {CONSTANTS} = require("./constants");
 
-const toggleLoading = ()=>{
+const enableLoading = ()=>{
+  return {
+    type: CONSTANTS.ENABLE_LOADING
+  }
+};
+
+const disableLoading = () => {
+  return {
+    type: CONSTANTS.DISABLE_LOADING
+  }
+};
+
+const toggleLoading = (isLoading) => {
+  //
+  // if (isLoading) {
+  //   return disableLoading();
+  // }else {
+  //   return enableLoading();
+  // }
+
   return {
     type: CONSTANTS.TOGGLE_LOADING,
     isLoading: store.getState().ui.isLoading
@@ -11,7 +30,7 @@ const toggleLoading = ()=>{
 const toggleClicked = (isClicked)=>{
   return {
     type: CONSTANTS.TOGGLE_CLICK,
-    isClicked: isClicked
+    isClicked: store.getState().ui.isClicked
   }
 };
 

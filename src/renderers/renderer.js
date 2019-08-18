@@ -6,7 +6,6 @@ var valueEl = document.getElementById('btn-loading')
 
 function render() {
   logger.info('renderer through electron loading -- '+store.getState().ui.isLoading);
-  valueEl.innerHTML = 'btn';
   if (store.getState().ui.isLoading) {
     valueEl.classList.add("is-loading");
   }else {
@@ -31,4 +30,4 @@ btn.addEventListener("click", async (event) => {
     throw e;
   }
   toggleLoading();
-});
+}, false);

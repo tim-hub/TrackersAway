@@ -9,12 +9,12 @@ const ui = (state = defaultState, action) => {
   switch (action.type) {
     case CONSTANTS.TOGGLE_LOADING:
       console.log('change loading status' + action.isLoading + action.type);
-      return Object.assign(state, {isLoading: !action.isLoading});
+      return Object.assign({}, state, {isLoading: !action.isLoading});
     case CONSTANTS.TOGGLE_CLICK:
       console.log('clicked status in action '+action.isClicked);
       console.log(state);
       // console.log(Object.assign(state, {isClicked: !action.isClicked}));
-      return Object.assign(state, {isClicked: !action.isClicked});
+      return Object.assign({}, state, {isClicked: !action.isClicked});
     default:
       return state
   }
