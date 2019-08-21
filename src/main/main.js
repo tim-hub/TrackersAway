@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require("electron");
-import * as path from "path";
+const { app, BrowserWindow, Menu } = require("electron");
+const path = require("path");
 require('dotenv').config();
 require("electron-reload")(
   __dirname
@@ -8,6 +8,8 @@ require("electron-reload")(
   //   hardResetMethod: "exit"
   // }
 );
+
+const {menu} = require('./menu');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -25,7 +27,7 @@ const createWindow = () => {
   });
 
   // and load the index2.html of the app.
-  win.loadFile(path.join(__dirname, "./src/pages/index2.html"));
+  win.loadFile(path.join(__dirname, "../pages/index2.html"));
 
   // Open the DevTools.
   if (process.env.LOG_LEVEL === 'debug'){
@@ -45,7 +47,10 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", createWindow);
+app.on("ready", ()=>{
+  createWindow();
+  Menu.setApplicationMenu(menu);
+});
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
