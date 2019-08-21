@@ -1,4 +1,4 @@
-const {addPermission, writeToFile, getLocalHosts, getHosts} = require("./utils/io");
+const {writeToFile, getLocalHosts, getHosts} = require("./utils/io");
 const {logger} = require("./utils/logger");
 
 const optPath = "/opt/hosts";
@@ -19,14 +19,18 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
 
   let remoteHosts;
   try{
-    remoteHosts = (await getHosts(url)).data.split(/\r?\n/);
-    logger.info(remoteHosts);
+    remoteHosts = (await getHosts(url)).data
+      .replace(/'/g, " ")
+      .replace(/"/g, " ")
+      .replace(/\\/g, ' ')
+      .replace(/\//g, " ")
+      .trim().split(/\r?\n/);
   }catch (e) {
     logger.error(e);
   }
-  //
-  await addPermission();
-  await writeToFile(remoteHosts, hostsPath);
+
+  // await addPermission(); // no need for using echo
+  await writeToFile(remoteHosts.join('\n').trim(), hostsPath);
 };
 
 module.exports = {main};

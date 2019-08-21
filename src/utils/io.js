@@ -5,8 +5,6 @@ const exec = util.promisify(require('child_process').exec);
 const sudo = require("sudo-prompt");
 const {logger} = require("./logger");
 
-
-
 const getHosts = async (url) => {
   return await axios.get(url);
 };
@@ -15,9 +13,9 @@ const getLocalHosts = async (path = "/opt/hosts", charset='utf8') => {
   return await fs.readFile(path, charset);
 };
 
-const addPermission = async() => {
+const addPermission = async(path = 'utils/fs-writer/index-macos') => {
   logger.info('change permission');
-  const { stdout, stderr } = await exec('chmod +x utils/fs-writer/index-macos');
+  const { stdout, stderr } = await exec('chmod +x '+path);
   return new Promise((resolve, reject)=>{
     if (stderr) {
       logger.error(`failed to add +x permission, error: ${stderr}`);
@@ -37,7 +35,7 @@ const writeToFile = async (content, hostsPath='/etc/hosts')=>{
   };
 
   return new Promise((resolve, reject)=>{
-    sudo.exec(`utils/fs-writer/index-macos '${content}' '${hostsPath}'`,
+    sudo.exec(`: > '${hostsPath}'  && echo -e '${content}' >> '${hostsPath}'`,
       options,
       (error, stdout, stderr) => {
         if (error || stderr){
@@ -52,7 +50,6 @@ const writeToFile = async (content, hostsPath='/etc/hosts')=>{
     )
   })
 };
-
 
 module.exports = {
   getHosts,
