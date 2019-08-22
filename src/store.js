@@ -11,7 +11,7 @@ const ui = (state = defaultState, action)=> {
   switch (action.type) {
     case CONSTANTS.TOGGLE_LOADING:
       console.log('change loading status'+action.isLoading + action.type);
-      return Object.assign(state, {isLoading: !action.isLoading});
+      return Object.assign({}, state, {isLoading: !action.isLoading});
     case 'DECREMENT':
       return state;
     default:

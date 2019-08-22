@@ -22,6 +22,11 @@ const btn = document.getElementById("new-window");
 btn.addEventListener("click", async (event) => {
   logger.debug("button clicked");
   toggleLoading();
-  await main('/tmp/hosts');
-  toggleLoading();
+  try{
+    await main('/tmp/hosts');
+    toggleLoading();
+  }catch (e){
+    toggleLoading();
+    logger.error(e);
+  }
 });

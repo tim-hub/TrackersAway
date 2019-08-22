@@ -15,6 +15,7 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
     logger.info(localHosts);
   }catch (e) {
     logger.error(e);
+    throw e;
   }
 
   let remoteHosts;
@@ -27,10 +28,13 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
       .trim().split(/\r?\n/);
   }catch (e) {
     logger.error(e);
+    throw e;
   }
-
-  // await addPermission(); // no need for using echo
-  await writeToFile(remoteHosts.join('\n').trim(), hostsPath);
+  try{
+    await writeToFile(remoteHosts.join('\n').trim(), hostsPath);
+  }catch (e) {
+    throw e;
+  }
 };
 
 module.exports = {main};
