@@ -1,5 +1,6 @@
 const {writeToFile, getLocalHosts, getHosts} = require("./utils/io");
 const {logger} = require("./utils/logger");
+const {compare} = require('./utils/diff');
 
 const optPath = "/opt/hosts";
 const hostsDefaultUrl =
@@ -18,8 +19,7 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
     throw e;
   }
 
-  const startSymbol = '####----$$$$----Managed By Hosts Manager';
-  const endSymbol = '####----!!!!----End Managed By Hosts Manager';
+
   let remoteHosts;
   try{
     remoteHosts = (await getHosts(url)).data
@@ -33,20 +33,10 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
     throw e;
   }
 
-  // compare these 2 files
-  localHosts.map(
-    (l,i)=>{
-      if (l===startSymbol){
-
-      } else if (l===endSymbol){
-
-      }
-    }
-  );
-
+  const results = compare(localHosts, remoteHosts);
 
   try{
-    await writeToFile(startSymbol.concat('\n',remoteHosts.join('\n').trim(),'\n', endSymbol), hostsPath);
+    await writeToFile(results.join('\n'), hostsPath);
   }catch (e) {
     throw e;
   }
