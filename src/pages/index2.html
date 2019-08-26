@@ -5,27 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clean HostsX</title>
     <link rel="stylesheet" href="../static/bulma.min.css">
+    <link rel="stylesheet" href="../../node_modules/bulma-tooltip/dist/css/bulma-tooltip.min.css">
     <script defer src="../static/fa.min.js"></script>
     <link rel="stylesheet" href="../static/main.css">
 </head>
 <body>
-<section class="section">
-    <div class="container">
-        <h1 class="title is-1 is-spaced has-text-centered has-text-primary">Clean HostsX</h1>
-        <h3 class="subtitle is-3 has-text-centered ">
-            The best Hosts Manager for Mac OS
-        </h3>
-        <main class="section">
-            <div class="level">
-                <div class="level-left"></div>
-                <div class="level-item">
-                    <button class="button is-primary is-rounded is-centered is-medium" id="new-window">
-                        <strong>Check for Updates & Apply</strong>
-                    </button>
+<section class="hero is-success is-fullheight">
+    <!-- Hero head: will stick at the top -->
+<!--    <div class="hero-head">-->
+<!--        <header class="navbar">-->
+<!--            <div class="container">-->
+<!--                <div class="navbar-brand">-->
+<!--                    <a class="navbar-item">-->
+<!--                        <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">-->
+<!--                    </a>-->
+<!--                    <span class="navbar-burger burger" data-target="navbarMenuHeroC">-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--            <span></span>-->
+<!--          </span>-->
+<!--                </div>-->
+<!--                <div id="navbarMenuHeroC" class="navbar-menu">-->
+<!--                    <div class="navbar-end">-->
+<!--                        <a class="navbar-item is-active">-->
+<!--                            Home-->
+<!--                        </a>-->
+<!--                        <a class="navbar-item">-->
+<!--                            Examples-->
+<!--                        </a>-->
+<!--                        <a class="navbar-item">-->
+<!--                            Documentation-->
+<!--                        </a>-->
+<!--                        <span class="navbar-item">-->
+<!--              <a class="button is-success is-inverted">-->
+<!--                <span class="icon">-->
+<!--                  <i class="fab fa-github"></i>-->
+<!--                </span>-->
+<!--                <span>Download</span>-->
+<!--              </a>-->
+<!--            </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </header>-->
+<!--    </div>-->
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">
+                Clean HostsX
+            </h1>
+            <h2 class="subtitle">
+                The best Hosts Manager for Mac OS.
+            </h2>
+            <main class="section">
+                <div class="level">
+                    <div class="level-left"></div>
+                    <div class="level-item">
+                        <button
+                            class="button is-warning is-rounded is-centered is-medium tooltip"
+                            id="new-window"
+                            data-tooltip="Click it to check for updates and apply!"
+                        >
+                            <strong>Check for Updates & Apply</strong>
+                        </button>
+
+                    </div>
+                    <div class="level-right"></div>
                 </div>
-                <div class="level-right"></div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+            <div class="container has-text-centered">
+                <ul>
+                    <li><a href="#">Github</a></li>
+                    <li><a href="#">Hosts Source</a></li>
+                    <li><a href="#">License</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
             </div>
-        </main>
+        </nav>
     </div>
 </section>
 </body>
