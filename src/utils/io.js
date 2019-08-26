@@ -41,6 +41,10 @@ const writeToFile = async (content, hostsPath='/etc/hosts')=>{
         if (error || stderr){
           logger.error(`failed to write to the file` + error);
           logger.error(stderr);
+          new Notification('The Sudo Permission is Required', {
+            body: 'to save the newer hosts file.'
+          });
+
           reject();
           throw error;
         }
