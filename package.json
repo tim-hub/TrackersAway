@@ -6,12 +6,16 @@
   "scripts": {
     "test": "find ./src -name '*.test.js' | xargs mocha -R spec",
     "lint": "tslint -c tslint.json -p tsconfig.json",
-    "start": "electron -r esm src/main/main.js"
+    "start": "electron src/main/main.js",
+    "build": "LOG_LEVEL='info' PRODUCTION=true electron-packager . hosts --platform=darwin --overwrite"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "devDependencies": {
+    "electron": "^5.0.7",
+    "electron-installer-dmg": "^3.0.0",
+    "electron-packager": "^14.0.5",
     "electron-reload": "^1.4.1",
     "mocha": "^6.2.0",
     "tslint": "^5.18.0"
@@ -21,8 +25,6 @@
     "axios": "^0.19.0",
     "bulma-tooltip": "^2.0.2",
     "dotenv": "^8.0.0",
-    "electron": "^5.0.7",
-    "esm": "^3.2.25",
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0",
     "redux": "^4.0.4",

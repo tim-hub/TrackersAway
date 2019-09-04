@@ -1,8 +1,8 @@
 const {logger} = require("./utils/logger");
 const {main} = require('./index');
-const {store, CONSTANTS, toggleLoading} = require('./store');
+const {store, toggleLoading} = require('./store');
 
-var valueEl = document.getElementById('new-window')
+var valueEl = document.getElementById('new-window');
 
 function render() {
   if (store.getState().ui.isLoading) {
@@ -21,7 +21,7 @@ btn.addEventListener("click", async (event) => {
   logger.debug("button clicked");
   toggleLoading();
   try{
-    await main('/tmp/hosts');
+    await main('/etc/hosts');
     toggleLoading();
   }catch (e){
     toggleLoading();
