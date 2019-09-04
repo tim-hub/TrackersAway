@@ -7,7 +7,6 @@ if (!process.env.PRODUCTION) {
   );
 }
 
-
 const {menu} = require('./menu');
 
 // Keep a global reference of the window object, if you don't, the window will
