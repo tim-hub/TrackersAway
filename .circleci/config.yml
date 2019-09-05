@@ -1,120 +1,74 @@
-version: 2.1
-
-executors:
-  docker-env:
-    docker:
-      - image: circleci/node:10.15.2-jessie-browsers-legacy
-  macos-env:
-    macos:
-      xcode: "10.2.0"
-
-step-save-cache: &step-save-cache
-  save_cache:
-    paths:
-      - ~/.cache/yarn
-      - ~/.cache/electron
-      - ~/.cache/electron-builder
-    key: yarn-packages-v2-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
-
-step-restore-cache: &step-restore-cache
-  restore_cache:
-    keys:
-      - yarn-packages-v2-{{ arch }}--{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - yarn-packages-v2-{{ arch }}
-
-step-yarn-install: &step-yarn-install
-  run: yarn install --frozen-lockfile
-
-step-build: &step-build
-  run: yarn build
-
-step-e2e: &step-e2e
-  run: yarn build
-
-filter-tag: &filter-tag
-  tags:
-    only: /^v.*/
-
-filter-tag-only: &filter-tag-only
-  <<: *filter-tag
-  branches:
-    ignore: /.*/
+version: 2
 
 jobs:
-#  lint:
-#    executor: docker-env
-#    steps:
-#      - checkout
-#      - run:
-#          name: Setup Environment Variables
-#          command: |
-#            echo 'export ELECTRON_CACHE="$HOME/.cache/electron"' >> $BASH_ENV
-#            echo 'export ELECTRON_BUILDER_CACHE="$HOME/.cache/electron-builder"' >> $BASH_ENV
-#      - *step-restore-cache
-#      - *step-yarn-install
-#      - *step-save-cache
-#      - run: yarn lint
-#  test-linux:
-#    executor: docker-env
-#    steps:
-#      - checkout
-#      - *step-restore-cache
-#      - *step-yarn-install
-#      - run: yarn coverage:ci
-#      - *step-build
-#      - *step-e2e
-  test-macos:
-    executor: macos-env
-    steps:
-      - checkout
-      - *step-restore-cache
-      - *step-yarn-install
-      - *step-save-cache
-#      - run: yarn test
-      - *step-build
-      - *step-e2e
-  deploy-macos:
-    executor: macos-env
-    steps:
-      - checkout
-      - *step-restore-cache
-      - *step-yarn-install
-      - *step-build
-      - run: yarn release
-  deploy-linux:
+  build:
     docker:
-      - image: electronuserland/builder:wine
+      - image: circleci/node:12.9.1
     steps:
       - checkout
-      - *step-restore-cache
-      - *step-yarn-install
-      - *step-build
-      - run: yarn release --linux --win
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          keys:
+            - v-6.0.0-electron
+      - run:
+          command: yarn --frozen-lockfile
+#      - run:
+#          command: yarn pretest
+      - save_cache:
+          key: deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+#      - run:
+#          command: node ./test/out/helpers/downloadElectron.js
+      - save_cache:
+          key: v-6.0.0-electron
+          paths:
+            - ~/.cache/electron
+
+  test:
+    parallelism: 4
+    docker:
+      - image: electronuserland/builder:wine-mono
+#        environment:
+#          JEST_JUNIT_OUTPUT: ./test-reports/test.xml
+#          TZ: Europe/Berlin
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - deps-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          keys:
+            - v-6.0.0-electron
+      # because in the build job we use circleci docker image and circleci restores cache to original user home
+      - run:
+          command: |
+            mv /home/circleci/project/node_modules node_modules
+            mkdir -p ~/.cache
+            mv /home/circleci/.cache/electron ~/.cache/electron
+      - run:
+          # do not use yarn test because lint is done in the build job
+          command: |
+            yarn build
+#            node ./test/out/helpers/runTests.js
+#      - store_test_results:
+#          path: test-reports
 
 workflows:
   version: 2
-  lint-test-build:
+  build_and_test:
     jobs:
-      - lint:
+      - build:
           filters:
-            <<: *filter-tag
-      - test-linux:
+            branches:
+              ignore:
+                - docs
+      - test:
           filters:
-            <<: *filter-tag
+            branches:
+              ignore:
+                - docs
           requires:
-            - lint
-      - test-macos:
-          filters:
-            <<: *filter-tag
-          requires:
-            - lint
-      - deploy-linux:
-          requires:
-            - test-linux
-          filters:
-            <<: *filter-tag-only
-      - deploy-macos:
-          requires:
-            - test-macos
-          filters:
-            <<: *filter-tag-only
+            - build
