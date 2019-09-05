@@ -8,7 +8,8 @@
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "build": "PRODUCTION=true electron-builder -p onTagOrDraft"
   },
   "keywords": [
     "Hosts Manager",
@@ -20,7 +21,6 @@
     "@types/axios": "^0.14.0",
     "axios": "^0.19.0",
     "bulma-tooltip": "^2.0.2",
-    "dotenv": "^8.0.0",
     "electron": "^5.0.8",
     "electron-builder": "^21.2.0",
     "electron-reload": "^1.4.1",
@@ -30,7 +30,20 @@
     "tslint": "^5.18.0"
   },
   "dependencies": {
+    "dotenv": "^8.0.0",
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0"
+  },
+  "build": {
+    "appId": "uno.bai.tim.bear-blocker",
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Office"
+    },
+    "mac": {
+      "category": "public.app-category.productivity"
+    }
   }
 }

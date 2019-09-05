@@ -26,10 +26,10 @@ step-yarn-install: &step-yarn-install
   run: yarn install --frozen-lockfile
 
 step-build: &step-build
-  run: yarn build:prod
+  run: yarn build
 
 step-e2e: &step-e2e
-  run: yarn e2e
+  run: yarn build
 
 filter-tag: &filter-tag
   tags:
