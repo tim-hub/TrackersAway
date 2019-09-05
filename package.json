@@ -1,7 +1,7 @@
 {
-  "name": "clean-hosts-node",
-  "version": "0.1.1",
-  "description": "",
+  "name": "beer-blocker",
+  "version": "0.1.2",
+  "description": "The best cross-platform ads blocker and hosts manager.",
   "main": "src/main/main.js",
   "scripts": {
     "test": "find ./src -name '*.test.js' | xargs mocha -R spec",
@@ -10,38 +10,24 @@
     "pack": "electron-builder --dir -mw",
     "dist": "electron-builder"
   },
-  "keywords": [],
+  "keywords": ["Hosts Manager", "Ads Blocker"],
   "author": "",
   "license": "",
   "devDependencies": {
-    "electron": "^5.0.7",
-    "electron-builder": "^21.2.0",
-    "electron-reload": "^1.4.1",
-    "mocha": "^6.2.0",
-    "tslint": "^5.18.0"
-  },
-  "dependencies": {
     "@types/axios": "^0.14.0",
     "axios": "^0.19.0",
     "bulma-tooltip": "^2.0.2",
     "dotenv": "^8.0.0",
-    "pino": "^5.13.1",
-    "pino-pretty": "^3.2.0",
+    "electron": "^5.0.8",
+    "electron-builder": "^21.2.0",
+    "electron-reload": "^1.4.1",
     "redux": "^4.0.4",
     "sudo-prompt": "^9.0.0",
-    "typescript": "^3.5.3"
+    "mocha": "^6.2.0",
+    "tslint": "^5.18.0"
   },
-  "build": {
-    "productName": "Clean Hosts",
-    "appId": "uno.bai.tim.clean-hosts",
-
-    "mac": {
-      "target": "dmg"
-
-    },
-    "win": {
-      "target": "nsis"
-
-    }
+  "dependencies": {
+    "pino": "^5.13.1",
+    "pino-pretty": "^3.2.0"
   }
 }

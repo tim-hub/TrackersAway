@@ -1,8 +1,7 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 require('dotenv').config();
-
-if (!process.env.PRODUCTION){
+if (!process.env.PRODUCTION) {
   require("electron-reload")(
     __dirname
   );
