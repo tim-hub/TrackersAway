@@ -1,7 +1,7 @@
 {
-  "name": "clean-hosts-node",
-  "version": "0.1.1",
-  "description": "The best cross-platform hosts manager.",
+  "name": "beer-blocker",
+  "version": "0.1.2",
+  "description": "The best cross-platform ads blocker and hosts manager.",
   "main": "src/main/main.js",
   "scripts": {
     "test": "find ./src -name '*.test.js' | xargs mocha -R spec",

@@ -1,7 +1,10 @@
-## Clean Hosts Ads Blocks
+# Beer Blocker
 
-- clean hosts is an ad blocker
-- clean hosts is also an hosts file manager
+**Bear Blocker**
+- is an ads blocker
+- also an hosts file manager
+
 
 ## Contribution
 - [contribute](/CONTRIBUTING.md)
+- [FAQ](/FAQ.md)
