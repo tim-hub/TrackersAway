@@ -41,28 +41,28 @@ filter-tag-only: &filter-tag-only
     ignore: /.*/
 
 jobs:
-  lint:
-    executor: docker-env
-    steps:
-      - checkout
-      - run:
-          name: Setup Environment Variables
-          command: |
-            echo 'export ELECTRON_CACHE="$HOME/.cache/electron"' >> $BASH_ENV
-            echo 'export ELECTRON_BUILDER_CACHE="$HOME/.cache/electron-builder"' >> $BASH_ENV
-      - *step-restore-cache
-      - *step-yarn-install
-      - *step-save-cache
-      - run: yarn lint
-  test-linux:
-    executor: docker-env
-    steps:
-      - checkout
-      - *step-restore-cache
-      - *step-yarn-install
-      - run: yarn coverage:ci
-      - *step-build
-      - *step-e2e
+#  lint:
+#    executor: docker-env
+#    steps:
+#      - checkout
+#      - run:
+#          name: Setup Environment Variables
+#          command: |
+#            echo 'export ELECTRON_CACHE="$HOME/.cache/electron"' >> $BASH_ENV
+#            echo 'export ELECTRON_BUILDER_CACHE="$HOME/.cache/electron-builder"' >> $BASH_ENV
+#      - *step-restore-cache
+#      - *step-yarn-install
+#      - *step-save-cache
+#      - run: yarn lint
+#  test-linux:
+#    executor: docker-env
+#    steps:
+#      - checkout
+#      - *step-restore-cache
+#      - *step-yarn-install
+#      - run: yarn coverage:ci
+#      - *step-build
+#      - *step-e2e
   test-macos:
     executor: macos-env
     steps:
@@ -70,7 +70,7 @@ jobs:
       - *step-restore-cache
       - *step-yarn-install
       - *step-save-cache
-      - run: yarn test
+#      - run: yarn test
       - *step-build
       - *step-e2e
   deploy-macos:
