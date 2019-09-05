@@ -23,7 +23,7 @@
     "bulma-tooltip": "^2.0.2",
     "electron": "^5.0.8",
     "electron-builder": "^21.2.0",
-    "electron-reload": "^1.4.1",
+
     "redux": "^4.0.4",
     "sudo-prompt": "^9.0.0",
     "mocha": "^6.2.0",
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "dotenv": "^8.0.0",
+    "electron-reload": "^1.4.1",
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0"
   },
