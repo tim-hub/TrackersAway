@@ -10,7 +10,10 @@
     "pack": "electron-builder --dir -mw",
     "dist": "electron-builder"
   },
-  "keywords": ["Hosts Manager", "Ads Blocker"],
+  "keywords": [
+    "Hosts Manager",
+    "Ads Blocker"
+  ],
   "author": "",
   "license": "",
   "devDependencies": {
