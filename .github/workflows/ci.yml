@@ -6,6 +6,7 @@ on:
       - 'master'
       - 'e-builder'
       - 'dev'
+      - 'action'
 
 jobs:
   test:
@@ -16,15 +17,14 @@ jobs:
     runs-on: ${{ matrix.platform }}
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
     - name: Use Node.js ${{ matrix.node-version }}
-
-#      uses: actions/setup-node@v1
-#      with:
-#        node-version: ${{ matrix.node-version }}
-      uses: "Borales/actions-yarn@master"
+    - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+#    - uses: "nuxt/actions-yarn@master"
+#      with:
+#        node-version: ${{ matrix.node-version }}
 
 #    - name: install yarn
 #      run: |
