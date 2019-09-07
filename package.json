@@ -9,7 +9,7 @@
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
     "dist": "electron-builder",
-    "build": "PRODUCTION=true electron-builder -p onTagOrDraft"
+    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTagOrDraft"
   },
   "keywords": [
     "Hosts Manager",
