@@ -35,7 +35,6 @@
   },
   "build": {
     "appId": "uno.bai.tim.bear-blocker",
-    "copyright" : "Copyright © year ${author}",
     "linux": {
       "target": [
         "AppImage"
