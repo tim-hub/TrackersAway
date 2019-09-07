@@ -42,6 +42,9 @@
       "category": "Office"
     },
     "mac": {
+      "target": [
+        "DMG"
+      ],
       "category": "public.app-category.productivity"
     }
   }
