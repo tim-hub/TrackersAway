@@ -21,7 +21,7 @@
     "axios": "^0.19.0",
     "bulma-tooltip": "^2.0.2",
     "dotenv": "^8.0.0",
-    "electron": "^5.0.7",
+    "electron": "^6.0.0",
     "esm": "^3.2.25",
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0",
