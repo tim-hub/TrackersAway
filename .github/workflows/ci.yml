@@ -1,15 +1,19 @@
-name: Node CI
+name: Trackers Away
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
+      - 'e-builder'
+      - 'dev'
 
 jobs:
   test:
-
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
 
     steps:
     - uses: actions/checkout@v1
@@ -21,6 +25,7 @@ jobs:
       uses: "Borales/actions-yarn@master"
       with:
         node-version: ${{ matrix.node-version }}
+
 #    - name: install yarn
 #      run: |
 #        echo 'I want to install yarn here.'
@@ -36,3 +41,17 @@ jobs:
         yarn
         yarn run build
         yarn test
+
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+        run: |
+          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
