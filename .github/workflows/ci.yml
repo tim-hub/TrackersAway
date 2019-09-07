@@ -6,52 +6,54 @@ on:
       - 'master'
       - 'e-builder'
       - 'dev'
+      - 'action'
 
 jobs:
   test:
+    name: test on ubuntu
+    strategy:
+      matrix:
+        node-version: [12.x]
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: do a test
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CI: true
+        run: |
+          echo 'token has been set'
+          yarn
+          yarn test
+
+
+  deploy:
+    name: Deploy
     strategy:
       matrix:
         node-version: [12.x]
         platform: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.platform }}
-
+    needs: test
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-#      uses: actions/setup-node@v1
-#      with:
-#        node-version: ${{ matrix.node-version }}
-      uses: "Borales/actions-yarn@master"
-      with:
-        node-version: ${{ matrix.node-version }}
-
-#    - name: install yarn
-#      run: |
-#        echo 'I want to install yarn here.'
-#        curl -sS "https://dl.yarnpkg.com/debian/pubkey.gpg" | sudo apt-key add -
-#        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-#        sudo apt-get update && sudo apt-get install yarn
-    - name: yarn install, build, and test
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        CI: true
-      run: |
-        echo 'token has been set'
-        yarn
-        yarn run build
-        yarn test
-
-
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print a greeting
+      - name: do a deploy
         env:
-          MY_VAR: Hi there! My name is
-          FIRST_NAME: Mona
-          MIDDLE_NAME: The
-          LAST_NAME: Octocat
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CI: true
         run: |
-          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+          echo 'token has been set'
+          yarn
+          yarn build
