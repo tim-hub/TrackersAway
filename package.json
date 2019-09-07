@@ -12,9 +12,9 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "electron-reload": "^1.4.1",
-    "mocha": "^6.2.0",
-    "tslint": "^5.18.0"
+    "electron-reload": "1.4.1",
+    "mocha": "6.2.0",
+    "tslint": "5.18.0"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
