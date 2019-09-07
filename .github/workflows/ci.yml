@@ -3,24 +3,29 @@ name: Node CI
 on: [push]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
+
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: install yarn
+      run: echo 'I want to install yarn here.'
     - name: npm install, build, and test
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        CI: true
       run: |
+        echo 'token has been set'
         npm install
         npm run build --if-present
         npm test
-      env:
-        CI: true
