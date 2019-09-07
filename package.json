@@ -8,7 +8,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
-    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTagOrDraft"
+    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p always"
   },
   "keywords": [
     "Hosts Manager",
@@ -35,6 +35,7 @@
   },
   "build": {
     "appId": "uno.bai.tim.bear-blocker",
+    "copyright" : "Copyright © year ${author}",
     "linux": {
       "target": [
         "AppImage"
