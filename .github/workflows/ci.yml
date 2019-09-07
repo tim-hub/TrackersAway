@@ -1,31 +1,57 @@
-name: Node CI
+name: Trackers Away
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
+      - 'e-builder'
+      - 'dev'
+      - 'action'
 
 jobs:
   test:
-
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/checkout@master
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      #    - uses: "nuxt/actions-yarn@master"
+      #      with:
+      #        node-version: ${{ matrix.node-version }}
 
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: install yarn
-      run: echo 'I want to install yarn here.'
-    - name: npm install, build, and test
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        CI: true
-      run: |
-        echo 'token has been set'
-        npm install
-        npm run build --if-present
-        npm test
+      #    - name: install yarn
+      #      run: |
+      #        echo 'I want to install yarn here.'
+      #        curl -sS "https://dl.yarnpkg.com/debian/pubkey.gpg" | sudo apt-key add -
+      #        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      #        sudo apt-get update && sudo apt-get install yarn
+      - name: yarn install, build, and test
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CI: true
+        run: |
+          echo 'token has been set'
+          yarn
+          yarn run build
+          yarn test
+
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+        run: |
+          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
