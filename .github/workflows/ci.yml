@@ -19,7 +19,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: install yarn
-      run: echo 'I want to install yarn here.'
+      run: |
+        echo 'I want to install yarn here.'
+        curl -sS "https://dl.yarnpkg.com/debian/pubkey.gpg" | sudo apt-key add -
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        sudo apt-get update && sudo apt-get install yarn
     - name: npm install, build, and test
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
