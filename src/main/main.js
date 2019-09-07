@@ -1,13 +1,11 @@
 const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 require('dotenv').config();
-require("electron-reload")(
-  __dirname
-  //     {
-  //   electron: "/usr/local/bin/electron",
-  //   hardResetMethod: "exit"
-  // }
-);
+if (!process.env.PRODUCTION) {
+  require("electron-reload")(
+    __dirname
+  );
+}
 
 const {menu} = require('./menu');
 
