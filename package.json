@@ -9,7 +9,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
-    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p always"
+    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTagOrDraft"
   },
   "keywords": [
     "Hosts Manager",
