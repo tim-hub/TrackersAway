@@ -34,26 +34,26 @@ jobs:
           yarn test
 
 
-  deploy:
-    name: Deploy
-    strategy:
-      matrix:
-        node-version: [12.x]
-        platform: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.platform }}
-    needs: test
-    steps:
-      - uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: do a deploy
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          CI: true
-        run: |
-          echo 'token has been set'
-          yarn
-          yarn build
+#  deploy:
+#    name: Deploy
+#    strategy:
+#      matrix:
+#        node-version: [12.x]
+#        platform: [ubuntu-latest, macos-latest, windows-latest]
+#    runs-on: ${{ matrix.platform }}
+#    needs: test
+#    steps:
+#      - uses: actions/checkout@master
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#
+#      - name: do a deploy
+#        env:
+#          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+#          CI: true
+#        run: |
+#          echo 'token has been set'
+#          yarn
+#          yarn build
