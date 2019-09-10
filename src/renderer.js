@@ -1,29 +1,29 @@
-const {logger} = require("./utils/logger");
+const {logger} = require('./utils/logger');
 const {main} = require('./index');
 const {store, toggleLoading} = require('./store');
 
-var valueEl = document.getElementById('new-window');
+const valueEl = document.getElementById('apply-button');
 
-function render() {
+const render = () => {
   if (store.getState().ui.isLoading) {
-    valueEl.classList.add("is-loading");
-  }else {
-    valueEl.classList.remove("is-loading");
+    valueEl.classList.add('is-loading');
+  } else {
+    valueEl.classList.remove('is-loading');
   }
-}
+};
 
 render();
 store.subscribe(render);
 
-const btn = document.getElementById("new-window");
+const btn = document.getElementById('apply-button');
 
-btn.addEventListener("click", async (event) => {
-  logger.debug("button clicked");
+btn.addEventListener('click', async (event) => {
+  logger.debug('button clicked');
   toggleLoading();
-  try{
+  try {
     await main('/etc/hosts');
     toggleLoading();
-  }catch (e){
+  } catch (e) {
     toggleLoading();
     logger.error(e);
   }

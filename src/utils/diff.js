@@ -1,4 +1,4 @@
-const {logger} = require("./logger");
+const {logger} = require('./logger');
 const startSymbol = '####----$$$$----Managed By Hosts Manager';
 const endSymbol = '####----!!!!----End Managed By Hosts Manager';
 
@@ -8,13 +8,13 @@ const compare = (localHosts, remoteHosts) => {
 
   // compare these 2 files
   localHosts.map(
-    (l, i) => {
-      if (l === startSymbol) {
-        startIndex = i;
-      } else if (l === endSymbol) {
-        endIndex = i;
+      (l, i) => {
+        if (l === startSymbol) {
+          startIndex = i;
+        } else if (l === endSymbol) {
+          endIndex = i;
+        }
       }
-    }
   );
 
   if (startIndex === -1 || endIndex === -1) {
@@ -35,5 +35,5 @@ const compare = (localHosts, remoteHosts) => {
 module.exports = {
   compare,
   startSymbol,
-  endSymbol
+  endSymbol,
 };

@@ -1,7 +1,7 @@
-const { createStore, combineReducers } = require('redux');
+const {createStore, combineReducers} = require('redux');
 
 const CONSTANTS = {
-  TOGGLE_LOADING: 'TOGGLE_LOADING'
+  TOGGLE_LOADING: 'TOGGLE_LOADING',
 };
 
 const defaultState ={
@@ -15,25 +15,25 @@ const ui = (state = defaultState, action)=> {
     case 'DECREMENT':
       return state;
     default:
-      return state
+      return state;
   }
-}
+};
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-let store = createStore( combineReducers({
-  ui: ui
+const store = createStore( combineReducers({
+  ui: ui,
 }));
 
 const toggleLoading = ()=>{
   store.dispatch({
     type: CONSTANTS.TOGGLE_LOADING,
-    isLoading: store.getState().ui.isLoading
+    isLoading: store.getState().ui.isLoading,
   });
 };
 
 module.exports={
   store,
   CONSTANTS,
-  toggleLoading
+  toggleLoading,
 };

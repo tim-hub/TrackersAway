@@ -1,4 +1,4 @@
-const { app, Menu } = require('electron');
+const {app, Menu} = require('electron');
 
 const isMac = process.platform === 'darwin';
 
@@ -7,83 +7,83 @@ const template = [
   ...(process.platform === 'darwin' ? [{
     label: app.getName(),
     submenu: [
-      { role: 'about' },
-      { type: 'separator' },
-      { role: 'services' },
-      { type: 'separator' },
-      { role: 'hide' },
-      { role: 'hideothers' },
-      { role: 'unhide' },
-      { type: 'separator' },
-      { role: 'quit' }
-    ]
+      {role: 'about'},
+      {type: 'separator'},
+      {role: 'services'},
+      {type: 'separator'},
+      {role: 'hide'},
+      {role: 'hideothers'},
+      {role: 'unhide'},
+      {type: 'separator'},
+      {role: 'quit'},
+    ],
   }] : []),
   // { role: 'fileMenu' }
   {
     label: 'File',
     submenu: [
-      isMac ? { role: 'close' } : { role: 'quit' }
-    ]
+      isMac ? {role: 'close'} : {role: 'quit'},
+    ],
   },
   // { role: 'editMenu' }
   {
     label: 'Edit',
     submenu: [
-      { role: 'undo' },
-      { role: 'redo' },
-      { type: 'separator' },
-      { role: 'cut' },
-      { role: 'copy' },
-      { role: 'paste' },
+      {role: 'undo'},
+      {role: 'redo'},
+      {type: 'separator'},
+      {role: 'cut'},
+      {role: 'copy'},
+      {role: 'paste'},
       ...(isMac ? [
-        { role: 'pasteAndMatchStyle' },
-        { role: 'delete' },
-        { role: 'selectAll' },
-        { type: 'separator' },
+        {role: 'pasteAndMatchStyle'},
+        {role: 'delete'},
+        {role: 'selectAll'},
+        {type: 'separator'},
         {
           label: 'Speech',
           submenu: [
-            { role: 'startspeaking' },
-            { role: 'stopspeaking' }
-          ]
-        }
+            {role: 'startspeaking'},
+            {role: 'stopspeaking'},
+          ],
+        },
       ] : [
-        { role: 'delete' },
-        { type: 'separator' },
-        { role: 'selectAll' }
-      ])
-    ]
+        {role: 'delete'},
+        {type: 'separator'},
+        {role: 'selectAll'},
+      ]),
+    ],
   },
   // { role: 'viewMenu' }
   {
     label: 'View',
     submenu: [
-      { role: 'reload' },
-      { role: 'forcereload' },
-      { role: 'toggledevtools' },
-      { type: 'separator' },
-      { role: 'resetzoom' },
-      { role: 'zoomin' },
-      { role: 'zoomout' },
-      { type: 'separator' },
-      { role: 'togglefullscreen' }
-    ]
+      {role: 'reload'},
+      {role: 'forcereload'},
+      {role: 'toggledevtools'},
+      {type: 'separator'},
+      {role: 'resetzoom'},
+      {role: 'zoomin'},
+      {role: 'zoomout'},
+      {type: 'separator'},
+      {role: 'togglefullscreen'},
+    ],
   },
   // { role: 'windowMenu' }
   {
     label: 'Window',
     submenu: [
-      { role: 'minimize' },
-      { role: 'zoom' },
+      {role: 'minimize'},
+      {role: 'zoom'},
       ...(isMac ? [
-        { type: 'separator' },
-        { role: 'front' },
-        { type: 'separator' },
-        { role: 'window' }
+        {type: 'separator'},
+        {role: 'front'},
+        {type: 'separator'},
+        {role: 'window'},
       ] : [
-        { role: 'close' }
-      ])
-    ]
+        {role: 'close'},
+      ]),
+    ],
   },
   {
     role: 'help',
@@ -91,16 +91,16 @@ const template = [
       {
         label: 'Learn More',
         click: async () => {
-          const { shell } = require('electron')
-          await shell.openExternal('https://electronjs.org')
-        }
-      }
-    ]
-  }
-]
+          const {shell} = require('electron');
+          await shell.openExternal('https://electronjs.org');
+        },
+      },
+    ],
+  },
+];
 
-const menu = Menu.buildFromTemplate(template)
+const menu = Menu.buildFromTemplate(template);
 
-module.exports= {menu}
+module.exports= {menu};
 
 
