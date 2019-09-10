@@ -6,7 +6,7 @@
   "main": "src/main/main.js",
   "scripts": {
     "test": "find ./src -name '*.test.js' | xargs mocha -R spec",
-    "lint": "find ./src -name '*.js' | xargs eslint",
+    "lint": "eslint . --config=.eslintrc.json --ignore-pattern *.min.js",
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
     "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTagOrDraft"

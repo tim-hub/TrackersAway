@@ -9,13 +9,13 @@ sampleLocal = [
   '---',
   endSymbol,
   '-2',
-  '-1'
+  '-1',
 ];
 
 sampleRemote = [
   '+++',
   '+++',
-  '+++'
+  '+++',
 ];
 
 sampleResults = [
@@ -28,7 +28,7 @@ sampleResults = [
   '+++',
   endSymbol,
   '-2',
-  '-1'
+  '-1',
 ];
 
 const assert = require('assert');

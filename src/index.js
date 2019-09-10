@@ -1,43 +1,42 @@
-const {writeToFile, getLocalHosts, getHosts} = require("./utils/io");
-const {logger} = require("./utils/logger");
+const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
+const {logger} = require('./utils/logger');
 const {compare} = require('./utils/diff');
 
-const optPath = "/opt/hosts";
 const hostsDefaultUrl =
-  "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts";
+  'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts';
 
 const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
   let localHosts;
-  try{
+  try {
     localHosts = (await getLocalHosts(
-      // hostsPath === '/opt/hosts' ?'/etc/hosts': hostsPath
-      hostsPath
+        // hostsPath === '/opt/hosts' ?'/etc/hosts': hostsPath
+        hostsPath
     )).trim().split(/\r?\n/);
     // logger.debug(localHosts);
-  }catch (e) {
+  } catch (e) {
     logger.error(e);
     throw e;
   }
 
 
   let remoteHosts;
-  try{
+  try {
     remoteHosts = (await getHosts(url)).data
-      .replace(/'/g, " ")
-      .replace(/"/g, " ")
-      .replace(/\\/g, ' ')
-      .replace(/\//g, " ")
-      .trim().split(/\r?\n/);
-  }catch (e) {
+        .replace(/'/g, ' ')
+        .replace(/"/g, ' ')
+        .replace(/\\/g, ' ')
+        .replace(/\//g, ' ')
+        .trim().split(/\r?\n/);
+  } catch (e) {
     logger.error(e);
     throw e;
   }
 
   const results = compare(localHosts, remoteHosts);
 
-  try{
+  try {
     await writeToFile(results.join('\n'), hostsPath);
-  }catch (e) {
+  } catch (e) {
     throw e;
   }
 };
