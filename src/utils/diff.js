@@ -1,11 +1,11 @@
+const R = require('ramda');
 const {logger} = require('./logger');
 const startSymbol = '####----$$$$----Managed By Hosts Manager';
 const endSymbol = '####----!!!!----End Managed By Hosts Manager';
 
-const compare = (localHosts, remoteHosts) => {
+const getIndexes = (localHosts) => {
   let startIndex = -1;
   let endIndex = -1;
-
   // compare these 2 files
   localHosts.map(
       (l, i) => {
@@ -16,7 +16,12 @@ const compare = (localHosts, remoteHosts) => {
         }
       }
   );
+  return {startIndex, endIndex};
+};
 
+
+const compare = (localHosts, remoteHosts) => {
+  const {startIndex, endIndex} = getIndexes(localHosts);
   if (startIndex === -1 || endIndex === -1) {
     return localHosts.concat([startSymbol], remoteHosts, [endSymbol]);
   } else {
@@ -32,8 +37,13 @@ const compare = (localHosts, remoteHosts) => {
   }
 };
 
+const getDiff = (localList, remoteList) => {
+  return R.without(localList, remoteList);
+};
+
 module.exports = {
   compare,
+  getDiff,
   startSymbol,
   endSymbol,
 };
