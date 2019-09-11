@@ -33,7 +33,8 @@
     "dotenv": "^8.0.0",
     "electron-reload": "1.5.0",
     "pino": "^5.13.1",
-    "pino-pretty": "^3.2.0"
+    "pino-pretty": "^3.2.0",
+    "ramda": "^0.26.1"
   },
   "build": {
     "appId": "uno.bai.tim.bear-blocker",
