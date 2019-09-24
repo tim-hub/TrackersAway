@@ -1,5 +1,5 @@
 const Store = require('electron-store');
-const store = new Store();
+const localStore = new Store();
 
 const options = [
   {
@@ -15,11 +15,17 @@ const config = {
   selected: [0],
 };
 
-if (store.get('options', false)) {
-  store.set(options);
-}
+const initStore = () => {
+  console.log('init store', localStore.get('options', false));
+  if (!localStore.get('options', false)) {
+    localStore.set({'options': options});
+  }
+  console.log('after init options', localStore.get('options', false));
+  if (!localStore.get('config', false)) {
+    localStore.set({'config': config});
+  }
+};
+initStore();
 
-if (store.get('config', false)) {
-  store.set(config);
-}
+module.exports = {localStore: localStore};
 

@@ -1,11 +1,9 @@
 const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
 const {logger} = require('./utils/logger');
 const {compare} = require('./utils/diff');
+const {localStore} = require('./utils/localStore');
 
-const hostsDefaultUrl =
-  'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts';
-
-const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
+const main = async (hostsPath = '/etc/hosts') => {
   let localHosts;
   try {
     localHosts = (await getLocalHosts(
@@ -20,6 +18,10 @@ const main = async (hostsPath = '/etc/hosts', url = hostsDefaultUrl, ) => {
 
 
   let remoteHosts;
+  const options = localStore.get('options');
+  const config = localStore.get('config');
+  const urls = options.filter((o, i)=> config.selected.includes(i));
+  const url = urls[0].raw;
   try {
     remoteHosts = (await getHosts(url)).data
         .replace(/'/g, ' ')

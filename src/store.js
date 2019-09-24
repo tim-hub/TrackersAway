@@ -19,7 +19,7 @@ const ui = (state = defaultState, action)=> {
   }
 };
 
-// Create a Redux store holding the state of your app.
+// Create a Redux localStore holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 const store = createStore( combineReducers({
   ui: ui,
