@@ -8,7 +8,7 @@ const options = [
     raw: 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
     url: 'https://github.com/StevenBlack/hosts',
     md5: 'F95172EAE2C3663E88628C3BE4C3E68B71EDA72B',
-    sha: '0f87dd0fad5d939ad1832e1028418cb3576ccf7db1c2ba870275ff528cd83e92',
+    sha: '291f1afda54eaa9548e7d15e73b11da908188b5f5a1cd5b955bb6af38b88eebe',
   },
 ];
 
@@ -28,5 +28,12 @@ const initStore = () => {
 };
 initStore();
 
-module.exports = {localStore: localStore};
+module.exports = {
+  localStore: localStore,
+  getSelectedOptions: () => {
+    return localStore.get('options').filter(
+        (o)=>localStore.get('config').selected.includes(o.id)
+    );
+  },
+};
 

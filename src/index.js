@@ -1,7 +1,8 @@
 const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
 const {logger} = require('./utils/logger');
 const {compare} = require('./utils/diff');
-const {localStore} = require('./utils/localStore');
+const {localStore, getSelectedOptions} = require('./utils/localStore');
+const {hash} = require('./utils/hash');
 
 const main = async (hostsPath = '/etc/hosts') => {
   let localHosts;
@@ -34,6 +35,8 @@ const main = async (hostsPath = '/etc/hosts') => {
     throw e;
   }
 
+  const sha = hash(remoteHosts);
+  console.log(sha, getSelectedOptions()[0].sha);
   const results = compare(localHosts, remoteHosts);
 
   try {
