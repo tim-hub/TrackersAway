@@ -8,6 +8,7 @@ const options = [
     raw: 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts',
     url: 'https://github.com/StevenBlack/hosts',
     md5: 'F95172EAE2C3663E88628C3BE4C3E68B71EDA72B',
+    sha: '0f87dd0fad5d939ad1832e1028418cb3576ccf7db1c2ba870275ff528cd83e92',
   },
 ];
 
