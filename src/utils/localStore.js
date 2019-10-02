@@ -17,11 +17,9 @@ const config = {
 };
 
 const initStore = () => {
-  console.log('init store', localStore.get('options', false));
   if (!localStore.get('options', false)) {
     localStore.set({'options': options});
   }
-  console.log('after init options', localStore.get('options', false));
   if (!localStore.get('config', false)) {
     localStore.set({'config': config});
   }
@@ -34,6 +32,11 @@ module.exports = {
     return localStore.get('options').filter(
         (o)=>localStore.get('config').selected.includes(o.id)
     );
+  },
+  setOptionSha: (id, sha) => {
+    localStore.set('options', options.map( (o) => {
+      return id===o.id ? {...o, sha: sha} : o;
+    }));
   },
 };
 

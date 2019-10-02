@@ -1,7 +1,7 @@
 const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
 const {logger} = require('./utils/logger');
 const {compare} = require('./utils/diff');
-const {localStore, getSelectedOptions} = require('./utils/localStore');
+const {localStore, getSelectedOptions, setOptionSha} = require('./utils/localStore');
 const {hash} = require('./utils/hash');
 
 const main = async (hostsPath = '/etc/hosts') => {
@@ -20,6 +20,7 @@ const main = async (hostsPath = '/etc/hosts') => {
 
   let remoteHosts;
   const options = localStore.get('options');
+  console.log(options);
   const config = localStore.get('config');
   const urls = options.filter((o, i)=> config.selected.includes(i));
   const url = urls[0].raw;
@@ -37,6 +38,14 @@ const main = async (hostsPath = '/etc/hosts') => {
 
   const sha = hash(remoteHosts);
   console.log(sha, getSelectedOptions()[0].sha);
+
+  if (sha === getSelectedOptions()[0].sha) {
+    console.log('no update');
+  } else {
+    setOptionSha(getSelectedOptions()[0].id, sha);
+    console.log(sha, getSelectedOptions()[0].sha);
+  }
+
   const results = compare(localHosts, remoteHosts);
 
   try {
