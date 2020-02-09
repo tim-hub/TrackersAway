@@ -19,7 +19,7 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "axios": "0.19.0",
+    "axios": "0.19.2",
     "bulma-tooltip": "2.0.2",
     "electron": "6.0.7",
     "electron-builder": "21.2.0",
