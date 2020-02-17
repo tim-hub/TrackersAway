@@ -27,7 +27,7 @@
     "eslint-config-google": "0.14.0",
     "mocha": "6.2.0",
     "redux": "4.0.5",
-    "sudo-prompt": "9.0.0"
+    "sudo-prompt": "9.1.1"
   },
   "dependencies": {
     "dotenv": "^8.0.0",
