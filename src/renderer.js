@@ -21,7 +21,7 @@ btn.addEventListener('click', async (event) => {
   logger.debug('button clicked');
   toggleLoading();
   try {
-    await main('/tmp/hosts');
+    await main('/etc/hosts');
     toggleLoading();
   } catch (e) {
     toggleLoading();
