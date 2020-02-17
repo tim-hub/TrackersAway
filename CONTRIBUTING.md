@@ -1,5 +1,7 @@
 
-## How to
+## Deployment
+- https://github.com/samuelmeuli/action-electron-builder
 
+## bugs
 
-## todo
+- log level not defined
