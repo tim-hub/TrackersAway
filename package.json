@@ -21,7 +21,7 @@
   "devDependencies": {
     "axios": "0.19.2",
     "bulma-tooltip": "2.0.2",
-    "electron": "6.0.7",
+    "electron": "8.0.1",
     "electron-builder": "22.3.2",
     "eslint": "6.3.0",
     "eslint-config-google": "0.14.0",
