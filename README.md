@@ -15,3 +15,8 @@ and StevenBlack's hosts list.
 ## Contribution
 - [contribute](/CONTRIBUTING.md)
 - [FAQ](/FAQ.md)
+
+## Hosts
+
+- [Google Hosts](https://github.com/googlehosts/hosts)
+- [StevenBlock](https://github.com/StevenBlack/hosts)
