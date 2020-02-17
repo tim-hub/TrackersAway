@@ -28,7 +28,7 @@ const createWindow = () => {
   win.loadFile(path.join(__dirname, '../pages/index2.html'));
 
   // Open the DevTools.
-  if (process.env.LOG_LEVEL === 'debug') {
+  if (process.env.LOG_LEVEL && process.env.LOG_LEVEL === 'debug') {
     win.webContents.openDevTools();
   }
 

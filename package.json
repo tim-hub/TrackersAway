@@ -1,6 +1,6 @@
 {
   "name": "trackers-away",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "The best cross-platform ads, tracking service blocker and hosts manager.",
   "repository": "https://github.com/tim-hub/TrackersAway",
   "main": "src/main/main.js",
@@ -16,20 +16,18 @@
     "Trackers Blocker",
     "Ads Blocker"
   ],
-  "author": "",
-  "license": "",
+  "author": "github.com/tim-hub",
+  "license": "APACHE V2",
   "devDependencies": {
-    "bulma-tooltip": "2.0.2",
     "electron": "8.0.1",
     "electron-builder": "22.3.2",
     "eslint": "6.3.0",
     "eslint-config-google": "0.14.0",
-    "mocha": "6.2.0",
-    "redux": "4.0.5",
-    "sudo-prompt": "9.1.1"
+    "mocha": "6.2.0"
   },
   "dependencies": {
     "axios": "0.19.2",
+    "bulma-tooltip": "2.0.2",
     "dotenv": "^8.0.0",
     "electron-reload": "1.5.0",
     "electron-store": "^5.0.0",
@@ -37,7 +35,9 @@
     "pino": "^5.13.1",
     "pino-pretty": "^3.2.0",
     "ramda": "^0.26.1",
-    "sha.js": "^2.4.11"
+    "redux": "4.0.5",
+    "sha.js": "^2.4.11",
+    "sudo-prompt": "9.1.1"
   },
   "build": {
     "appId": "uno.bai.tim.bear-blocker",
