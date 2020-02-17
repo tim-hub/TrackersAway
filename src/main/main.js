@@ -1,9 +1,9 @@
-const { app, BrowserWindow, Menu } = require("electron");
-const path = require("path");
+const {app, BrowserWindow, Menu} = require('electron');
+const path = require('path');
 require('dotenv').config();
 if (!process.env.PRODUCTION) {
-  require("electron-reload")(
-    __dirname
+  require('electron-reload')(
+      __dirname
   );
 }
 
@@ -19,23 +19,23 @@ const createWindow = () => {
     height: 600,
     width: 800,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
     },
-    resizable: false
+    resizable: false,
   });
 
   // and load the index2.html of the app.
-  win.loadFile(path.join(__dirname, "../pages/index2.html"));
+  win.loadFile(path.join(__dirname, '../pages/index2.html'));
 
   // Open the DevTools.
-  if (process.env.LOG_LEVEL === 'debug'){
+  if (process.env.LOG_LEVEL === 'debug') {
     win.webContents.openDevTools();
   }
 
 
   // Emitted when the window is closed.
-  win.on("closed", () => {
-    // Dereference the window object, usually you would store windows
+  win.on('closed', () => {
+    // Dereference the window object, usually you would localStore windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     win = null;
@@ -45,21 +45,21 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on("ready", ()=>{
+app.on('ready', () => {
   createWindow();
   Menu.setApplicationMenu(menu);
 });
 
 // Quit when all windows are closed.
-app.on("window-all-closed", () => {
+app.on('window-all-closed', () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== "darwin") {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on("activate", () => {
+app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (win === null) {

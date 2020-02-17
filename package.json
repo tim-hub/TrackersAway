@@ -1,11 +1,12 @@
 {
   "name": "trackers-away",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "The best cross-platform ads, tracking service blocker and hosts manager.",
+  "repository": "https://github.com/tim-hub/TrackersAway",
   "main": "src/main/main.js",
   "scripts": {
     "test": "find ./src -name '*.test.js' | xargs mocha -R spec",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint": "eslint . --config=.eslintrc.json --ignore-pattern *.min.js",
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
     "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTagOrDraft"
@@ -22,19 +23,28 @@
     "bulma-tooltip": "^2.0.2",
     "electron": "^6.0.0",
     "electron-builder": "^21.2.0",
-    "redux": "^4.0.4",
-    "sudo-prompt": "^9.0.0",
+    "eslint": "^6.3.0",
+    "eslint-config-google": "^0.14.0",
     "mocha": "6.2.0",
-    "tslint": "5.19.0"
+    "redux": "^4.0.4",
+    "sudo-prompt": "^9.0.0"
   },
   "dependencies": {
     "dotenv": "^8.0.0",
     "electron-reload": "1.5.0",
+    "electron-store": "^5.0.0",
+    "md5": "^2.2.1",
     "pino": "^5.13.1",
-    "pino-pretty": "^3.2.0"
+    "pino-pretty": "^3.2.0",
+    "ramda": "^0.26.1",
+    "sha.js": "^2.4.11"
   },
   "build": {
     "appId": "uno.bai.tim.bear-blocker",
+    "publish": {
+      "provider": "github",
+      "releaseType": "prerelease"
+    },
     "linux": {
       "target": [
         "AppImage"
@@ -42,7 +52,15 @@
       "category": "Office"
     },
     "mac": {
+      "target": [
+        "dmg"
+      ],
       "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
     }
   }
 }
