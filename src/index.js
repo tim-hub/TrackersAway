@@ -7,6 +7,7 @@ const {localStore,
 const {hash} = require('./utils/hash');
 const {
   updateFetchingState,
+  FETCHING_STATE,
 } = require('./store');
 
 const main = async (hostsPath = '/etc/hosts') => {
