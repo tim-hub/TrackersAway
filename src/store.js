@@ -12,6 +12,9 @@ const defaultState ={
 const FETCHING_STATE ={
   init: 'init',
   fetching: 'fetching',
+  doneFetching: 'doneFetching',
+  noupdate: 'noupdate',
+  buildHosts: 'buildHosts',
   done: 'done',
   error: 'error',
 };

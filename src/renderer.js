@@ -3,7 +3,6 @@ const {main} = require('./index');
 const {
   store,
   toggleLoading,
-  updateFetchingState,
   FETCHING_STATE,
 } = require('./store');
 
@@ -13,7 +12,22 @@ const logEl = document.getElementById('log-area');
 const render = () => {
   if (store.getState().ui.isLoading) {
     valueEl.classList.add('is-loading');
-    logEl.innerHTML='Fetching and updating the hosts';
+    switch (store.getState().fetching.state) {
+      case FETCHING_STATE.fetching:
+        logEl.innerHTML='Fetching remote hosts file';
+        break;
+      case FETCHING_STATE.init:
+        logEl.innerHTML='init';
+        break;
+      case FETCHING_STATE.buildHosts:
+        logEl.innerHTML='compare and update the hosts at /etc/hosts';
+        break;
+      case FETCHING_STATE.noupdate:
+        logEl.innerHTML='No hosts update, update is not required';
+        break;
+      default:
+        logEl.innerHTML='Fetching is done';
+    }
   } else {
     valueEl.classList.remove('is-loading');
     if (store.getState().fetching.state === FETCHING_STATE.error) {
@@ -34,14 +48,12 @@ const btn = document.getElementById('apply-button');
 btn.addEventListener('click', async (event) => {
   logger.debug('button clicked');
   toggleLoading();
-  updateFetchingState(FETCHING_STATE.fetching);
+
   try {
     await main('/etc/hosts');
     toggleLoading();
-    updateFetchingState(FETCHING_STATE.done);
   } catch (e) {
     toggleLoading();
-    updateFetchingState(FETCHING_STATE.error);
     logger.error(e);
   }
 });

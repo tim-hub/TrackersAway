@@ -1,10 +1,16 @@
 const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
 const {logger} = require('./utils/logger');
 const {compare} = require('./utils/diff');
-const {localStore, getSelectedOptions, setOptionSha} = require('./utils/localStore');
+const {localStore,
+  getSelectedOptions,
+  setOptionSha} = require('./utils/localStore');
 const {hash} = require('./utils/hash');
+const {
+  updateFetchingState,
+} = require('./store');
 
 const main = async (hostsPath = '/etc/hosts') => {
+  updateFetchingState(FETCHING_STATE.init);
   let localHosts;
   try {
     localHosts = (await getLocalHosts(
@@ -24,6 +30,7 @@ const main = async (hostsPath = '/etc/hosts') => {
   const config = localStore.get('config');
   const urls = options.filter((o, i)=> config.selected.includes(i));
   const url = urls[0].raw;
+  updateFetchingState(FETCHING_STATE.fetching);
   try {
     remoteHosts = (await getHosts(url)).data
         .replace(/'/g, ' ')
@@ -35,23 +42,26 @@ const main = async (hostsPath = '/etc/hosts') => {
     logger.error(e);
     throw e;
   }
+  updateFetchingState(FETCHING_STATE.doneFetching);
 
   const sha = hash(remoteHosts);
   console.log(sha, getSelectedOptions()[0].sha);
 
   if (sha === getSelectedOptions()[0].sha) {
     console.log('no update');
+    updateFetchingState(FETCHING_STATE.noupdate);
   } else {
     setOptionSha(getSelectedOptions()[0].id, sha);
     console.log(sha, getSelectedOptions()[0].sha);
-  }
-
-  const results = compare(localHosts, remoteHosts);
-
-  try {
-    await writeToFile(results.join('\n'), hostsPath);
-  } catch (e) {
-    throw e;
+    const results = compare(localHosts, remoteHosts);
+    try {
+      updateFetchingState(FETCHING_STATE.buildHosts);
+      await writeToFile(results.join('\n'), hostsPath);
+    } catch (e) {
+      // error will be catched in render
+      updateFetchingState(FETCHING_STATE.error);
+      throw e;
+    }
   }
 };
 
