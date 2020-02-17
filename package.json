@@ -1,6 +1,6 @@
 {
   "name": "trackers-away",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "The best cross-platform ads, tracking service blocker and hosts manager.",
   "repository": "https://github.com/tim-hub/TrackersAway",
   "main": "src/main/main.js",
@@ -19,7 +19,6 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "axios": "0.19.2",
     "bulma-tooltip": "2.0.2",
     "electron": "8.0.1",
     "electron-builder": "22.3.2",
@@ -30,6 +29,7 @@
     "sudo-prompt": "9.1.1"
   },
   "dependencies": {
+    "axios": "0.19.2",
     "dotenv": "^8.0.0",
     "electron-reload": "1.5.0",
     "electron-store": "^5.0.0",
