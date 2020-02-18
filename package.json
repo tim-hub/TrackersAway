@@ -1,6 +1,6 @@
 {
   "name": "trackers-away",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "The best cross-platform ads, tracking service blocker and hosts manager.",
   "repository": "https://github.com/tim-hub/TrackersAway",
   "main": "src/main/main.js",
@@ -9,7 +9,7 @@
     "lint": "eslint . --config=.eslintrc.json --ignore-pattern *.min.js",
     "start": "electron src/main/main.js",
     "pack": "electron-builder --dir -mw",
-    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTagOrDraft"
+    "build": "LOG_LEVEL=info PRODUCTION=true electron-builder -p onTag"
   },
   "keywords": [
     "Hosts Manager",
@@ -56,11 +56,6 @@
         "dmg"
       ],
       "category": "public.app-category.productivity"
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
     }
   }
 }
