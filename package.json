@@ -19,10 +19,12 @@
   "author": "github.com/tim-hub",
   "license": "Apache",
   "devDependencies": {
+    "acorn": "7.1.1",
     "electron": "8.2.0",
     "electron-builder": "22.3.2",
     "eslint": "6.8.0",
     "eslint-config-google": "0.14.0",
+    "minimist": "1.2.5",
     "mocha": "6.2.0"
   },
   "dependencies": {
