@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "axios": "0.19.2",
-    "bulma-tooltip": "2.0.2",
+    "bulma-tooltip": "3.0.2",
     "dotenv": "^8.0.0",
     "electron-reload": "1.5.0",
     "electron-store": "^5.0.0",
