@@ -26,49 +26,49 @@ const template = [
     ],
   },
   // { role: 'editMenu' }
-  {
-    label: 'Edit',
-    submenu: [
-      {role: 'undo'},
-      {role: 'redo'},
-      {type: 'separator'},
-      {role: 'cut'},
-      {role: 'copy'},
-      {role: 'paste'},
-      ...(isMac ? [
-        {role: 'pasteAndMatchStyle'},
-        {role: 'delete'},
-        {role: 'selectAll'},
-        {type: 'separator'},
-        {
-          label: 'Speech',
-          submenu: [
-            {role: 'startspeaking'},
-            {role: 'stopspeaking'},
-          ],
-        },
-      ] : [
-        {role: 'delete'},
-        {type: 'separator'},
-        {role: 'selectAll'},
-      ]),
-    ],
-  },
+  // {
+  //   label: 'Edit',
+  //   submenu: [
+  //     {role: 'undo'},
+  //     {role: 'redo'},
+  //     {type: 'separator'},
+  //     {role: 'cut'},
+  //     {role: 'copy'},
+  //     {role: 'paste'},
+  //     ...(isMac ? [
+  //       {role: 'pasteAndMatchStyle'},
+  //       {role: 'delete'},
+  //       {role: 'selectAll'},
+  //       {type: 'separator'},
+  //       {
+  //         label: 'Speech',
+  //         submenu: [
+  //           {role: 'startspeaking'},
+  //           {role: 'stopspeaking'},
+  //         ],
+  //       },
+  //     ] : [
+  //       {role: 'delete'},
+  //       {type: 'separator'},
+  //       {role: 'selectAll'},
+  //     ]),
+  //   ],
+  // },
   // { role: 'viewMenu' }
-  {
-    label: 'View',
-    submenu: [
-      {role: 'reload'},
-      {role: 'forcereload'},
-      {role: 'toggledevtools'},
-      {type: 'separator'},
-      {role: 'resetzoom'},
-      {role: 'zoomin'},
-      {role: 'zoomout'},
-      {type: 'separator'},
-      {role: 'togglefullscreen'},
-    ],
-  },
+  // {
+  //   label: 'View',
+  //   submenu: [
+  //     {role: 'reload'},
+  //     {role: 'forcereload'},
+  //     {role: 'toggledevtools'},
+  //     {type: 'separator'},
+  //     {role: 'resetzoom'},
+  //     {role: 'zoomin'},
+  //     {role: 'zoomout'},
+  //     {type: 'separator'},
+  //     {role: 'togglefullscreen'},
+  //   ],
+  // },
   // { role: 'windowMenu' }
   {
     label: 'Window',
@@ -89,10 +89,10 @@ const template = [
     role: 'help',
     submenu: [
       {
-        label: 'Learn More',
+        label: 'Telegram Channel',
         click: async () => {
           const {shell} = require('electron');
-          await shell.openExternal('https://electronjs.org');
+          await shell.openExternal('https://t.me/s/trackersaway');
         },
       },
     ],
