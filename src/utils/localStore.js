@@ -10,6 +10,14 @@ const options = [
     md5: 'F95172EAE2C3663E88628C3BE4C3E68B71EDA72B',
     sha: '291f1afda54eaa9548e7d15e73b11da908188b5f5a1cd5b955bb6af38b88eebe',
   },
+  {
+    id: 1,
+    name: 'Fake News',
+    raw: 'https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts',
+    url: 'https://github.com/StevenBlack/hosts',
+    md5: 'F95172EAE2C3663E88628C3BE4C3E68B71EDA72B',
+    sha: '291f1afda54eaa9548e7d15e73b11da908188b5f5a1cd5b955bb6af38b88eebe',
+  },
 ];
 
 const config = {

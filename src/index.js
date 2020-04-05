@@ -16,7 +16,7 @@ const main = async (hostsPath = '/etc/hosts') => {
   try {
     localHosts = (await getLocalHosts(
         // hostsPath === '/opt/hosts' ?'/etc/hosts': hostsPath
-        hostsPath
+        hostsPath,
     )).trim().split(/\r?\n/);
     // logger.debug(localHosts);
   } catch (e) {
