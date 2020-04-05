@@ -14,6 +14,7 @@
   "keywords": [
     "Hosts Manager",
     "Trackers Blocker",
+    "Trackers Away",
     "Ads Blocker"
   ],
   "author": "github.com/tim-hub",
@@ -42,10 +43,10 @@
     "sudo-prompt": "9.1.1"
   },
   "build": {
-    "appId": "uno.bai.tim.bear-blocker",
+    "appId": "uno.bai.tim.trackers-away",
     "publish": {
       "provider": "github",
-      "releaseType": "prerelease"
+      "releaseType": "release"
     },
     "linux": {
       "target": [
