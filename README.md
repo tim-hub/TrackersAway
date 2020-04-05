@@ -1,5 +1,5 @@
 # Trackers Away
-
+[![CodeFactor](https://www.codefactor.io/repository/github/tim-hub/trackersaway/badge)](https://www.codefactor.io/repository/github/tim-hub/trackersaway)
 - is an ads and trackers blocker
 - also an hosts file manager
 
@@ -18,6 +18,7 @@ and StevenBlack's hosts list.
 
 
 ## Contribution
+- [Telegram Chanel](https://t.me/s/trackersaway)
 - [contribute](/CONTRIBUTING.md)
 - [FAQ](/FAQ.md)
 
