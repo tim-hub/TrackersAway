@@ -1,6 +1,9 @@
+# Development
+- `yarn start`
+- `yarn pack` optional
 
 # Deployment
-`yarn start`
+- `yarn build`
 
 ## Github Action
 
@@ -14,3 +17,4 @@
 # ref
 
 - https://github.com/samuelmeuli/action-electron-builder
+- https://www.electron.build/#quick-setup-guide
