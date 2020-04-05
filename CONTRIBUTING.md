@@ -1,6 +1,6 @@
 
 # Deployment
-`npm run start`
+`yarn start`
 
 ## Github Action
 
