@@ -6,7 +6,7 @@ const endSymbol = '####----!!!!----End Managed By Hosts Manager';
 const getIndexes = (localHosts) => {
   let startIndex = -1;
   let endIndex = -1;
-  // compare these 2 files
+  // mergeLocalAndRemote these 2 files
   localHosts.map(
       (l, i) => {
         if (l === startSymbol) {
@@ -14,13 +14,17 @@ const getIndexes = (localHosts) => {
         } else if (l === endSymbol) {
           endIndex = i;
         }
-      }
+      },
   );
   return {startIndex, endIndex};
 };
 
-
-const compare = (localHosts, remoteHosts) => {
+// eslint-disable-next-line valid-jsdoc
+/**
+ * to mergeLocalAndRemote local and remote hosts
+ * @return {Buffer | any[] | string}
+ */
+const mergeLocalAndRemote = (localHosts, remoteHosts) => {
   const {startIndex, endIndex} = getIndexes(localHosts);
   if (startIndex === -1 || endIndex === -1) {
     return localHosts.concat([startSymbol], remoteHosts, [endSymbol]);
@@ -42,8 +46,9 @@ const getDiff = (localList, remoteList) => {
 };
 
 module.exports = {
-  compare,
+  mergeLocalAndRemote: mergeLocalAndRemote,
   getDiff,
   startSymbol,
   endSymbol,
+  getIndexes,
 };

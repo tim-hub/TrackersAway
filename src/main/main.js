@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config();
 if (!process.env.PRODUCTION) {
   require('electron-reload')(
-      __dirname
+      __dirname,
   );
 }
 

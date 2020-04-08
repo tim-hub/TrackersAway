@@ -1,9 +1,10 @@
 const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
 const {logger} = require('./utils/logger');
-const {compare} = require('./utils/diff');
+const {mergeLocalAndRemote, getIndexes} = require('./utils/diff');
 const {localStore,
-  getSelectedOptions,
-  setOptionSha} = require('./utils/localStore');
+  // getSelectedOptions,
+  // setOptionSha
+} = require('./utils/localStore');
 const {hash} = require('./utils/hash');
 const {
   updateFetchingState,
@@ -25,7 +26,7 @@ const main = async (hostsPath = '/etc/hosts') => {
   }
 
 
-  let remoteHosts;
+  let remoteHostsContent;
   const options = localStore.get('options');
   console.log(options);
   const config = localStore.get('config');
@@ -33,7 +34,7 @@ const main = async (hostsPath = '/etc/hosts') => {
   const url = urls[0].raw;
   updateFetchingState(FETCHING_STATE.fetching);
   try {
-    remoteHosts = (await getHosts(url)).data
+    remoteHostsContent = (await getHosts(url)).data
         .replace(/'/g, ' ')
         .replace(/"/g, ' ')
         .replace(/\\/g, ' ')
@@ -45,16 +46,18 @@ const main = async (hostsPath = '/etc/hosts') => {
   }
   updateFetchingState(FETCHING_STATE.doneFetching);
 
-  const sha = hash(remoteHosts);
-  console.log(sha, getSelectedOptions()[0].sha);
+  const remoteHash = hash(remoteHostsContent);
+  const {startIndex, endIndex} = getIndexes(localHosts);
+  const localHostsContent = localHosts.slice(startIndex+1, endIndex);
+  const localHostsHash = hash(localHostsContent);
 
-  if (sha === getSelectedOptions()[0].sha) {
+  if (remoteHash === localHostsHash) {
     console.log('no update');
     updateFetchingState(FETCHING_STATE.noupdate);
   } else {
-    setOptionSha(getSelectedOptions()[0].id, sha);
-    console.log(sha, getSelectedOptions()[0].sha);
-    const results = compare(localHosts, remoteHosts);
+    // setOptionSha(getSelectedOptions()[0].id, remoteHash);
+
+    const results = mergeLocalAndRemote(localHosts, remoteHostsContent);
     try {
       updateFetchingState(FETCHING_STATE.buildHosts);
       await writeToFile(results.join('\n'), hostsPath);

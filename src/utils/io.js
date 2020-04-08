@@ -3,13 +3,14 @@ const axios = require('axios');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 const sudo = require('sudo-prompt');
+const defaultHostPath = '/etc/hosts';
 const {logger} = require('./logger');
 
 const getHosts = async (url) => {
   return await axios.get(url);
 };
 
-const getLocalHosts = async (path = '/opt/hosts', charset='utf8') => {
+const getLocalHosts = async (path = defaultHostPath, charset='utf8') => {
   return await fs.readFile(path, charset);
 };
 
@@ -28,7 +29,7 @@ const addPermission = async (path = 'utils/fs-writer/index-macos') => {
 };
 
 
-const writeToFile = async (content, hostsPath='/etc/hosts')=>{
+const writeToFile = async (content, hostsPath=defaultHostPath)=>{
   logger.info('start to write to file '+hostsPath);
   const options = {
     name: 'Write to Hosts',
@@ -50,7 +51,7 @@ const writeToFile = async (content, hostsPath='/etc/hosts')=>{
           }
           logger.info('write to successfully: ' + stdout);
           resolve();
-        }
+        },
     );
   });
 };
