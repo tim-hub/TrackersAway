@@ -14,7 +14,7 @@ const getIndexes = (localHosts) => {
         } else if (l === endSymbol) {
           endIndex = i;
         }
-      }
+      },
   );
   return {startIndex, endIndex};
 };
