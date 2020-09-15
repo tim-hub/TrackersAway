@@ -20,7 +20,7 @@
   "author": "github.com/tim-hub",
   "license": "Apache",
   "devDependencies": {
-    "acorn": "7.1.1",
+    "acorn": "7.4.0",
     "electron": "10.1.2",
     "electron-builder": "22.4.1",
     "eslint": "6.8.0",
