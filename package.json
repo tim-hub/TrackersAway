@@ -35,7 +35,7 @@
     "electron-store": "^6.0.0",
     "md5": "^2.2.1",
     "minimist": "1.2.5",
-    "pino": "6.1.1",
+    "pino": "6.6.1",
     "pino-pretty": "^4.0.0",
     "ramda": "^0.27.0",
     "redux": "4.0.5",
