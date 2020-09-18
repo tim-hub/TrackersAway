@@ -95,6 +95,13 @@ const template = [
           await shell.openExternal('https://t.me/s/trackersaway');
         },
       },
+      {
+        label: 'Source Code',
+        click: async () => {
+          const {shell} = require('electron');
+          await shell.openExternal('https://github.com/tim-hub/TrackersAway');
+        },
+      },
     ],
   },
 ];

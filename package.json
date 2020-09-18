@@ -1,7 +1,8 @@
 {
   "name": "trackers-away",
+  "productName": "Trackers Away",
   "version": "0.2.4",
-  "description": "The best cross-platform ads, trackers blocker and hosts manager.",
+  "description": "The best cross-platform ads and trackers blocker and hosts manager.",
   "repository": "https://github.com/tim-hub/TrackersAway",
   "main": "src/main/main.js",
   "scripts": {
@@ -43,6 +44,7 @@
   },
   "build": {
     "appId": "uno.bai.tim.trackers-away",
+    "productName": "Trackers Away",
     "publish": {
       "provider": "github",
       "releaseType": "release"
