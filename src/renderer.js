@@ -1,5 +1,5 @@
 const {logger} = require('./utils/logger');
-const {main} = require('./index');
+const {applyHostsUpdate} = require('./index');
 const {
   store,
   toggleLoading,
@@ -46,11 +46,11 @@ store.subscribe(render);
 const btn = document.getElementById('apply-button');
 
 btn.addEventListener('click', async (event) => {
-  logger.debug('button clicked');
+  logger.debug('hosts apply button clicked');
   toggleLoading();
 
   try {
-    await main('/etc/hosts');
+    await applyHostsUpdate('/etc/hosts');
     toggleLoading();
   } catch (e) {
     toggleLoading();

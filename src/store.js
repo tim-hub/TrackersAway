@@ -1,5 +1,5 @@
 const {createStore, combineReducers} = require('redux');
-const {logger} = require('./logger');
+const {logger} = require('./utils/logger');
 
 const CONSTANTS = {
   TOGGLE_LOADING: 'TOGGLE_LOADING',

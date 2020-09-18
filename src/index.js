@@ -8,7 +8,7 @@ const {
   FETCHING_STATE,
 } = require('./store');
 
-const main = async (hostsPath = '/etc/hosts') => {
+const applyHostsUpdate = async (hostsPath = '/etc/hosts') => {
   updateFetchingState(FETCHING_STATE.init);
   let localHosts;
   try {
@@ -47,8 +47,10 @@ const main = async (hostsPath = '/etc/hosts') => {
   const {startIndex, endIndex} = getIndexes(localHosts);
   const localHostsContent = localHosts.slice(startIndex+1, endIndex);
   const localHostsHash = hash(localHostsContent);
+  const toUpdate = remoteHash !== localHostsHash ||
+    process.env.FORCE_COMPARE === 'true';
 
-  if (remoteHash === localHostsHash) {
+  if (!toUpdate) {
     logger.debug('no update');
     updateFetchingState(FETCHING_STATE.noupdate);
   } else {
@@ -66,4 +68,4 @@ const main = async (hostsPath = '/etc/hosts') => {
   }
 };
 
-module.exports = {main};
+module.exports = {applyHostsUpdate: applyHostsUpdate};
