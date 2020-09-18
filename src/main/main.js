@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config();
 if (!process.env.PRODUCTION) {
   require('electron-reload')(
-      __dirname
+      __dirname,
   );
 }
 
@@ -20,6 +20,7 @@ const createWindow = () => {
     width: 800,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true, // this is for an issue related to electron-store, app undefined, https://github.com/sindresorhus/electron-store/issues/138
     },
     resizable: false,
   });
