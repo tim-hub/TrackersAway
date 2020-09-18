@@ -1,4 +1,4 @@
-const {compare, startSymbol, endSymbol} = require('./diff');
+const {mergeLocalAndRemote, startSymbol, endSymbol} = require('./diff');
 
 sampleLocal = [
   '0',
@@ -32,10 +32,10 @@ sampleResults = [
 ];
 
 const assert = require('assert');
-describe('testing the compare function', () => {
+describe('testing the mergeLocalAndRemote function', () => {
   describe('these should be equal ', () => {
     it('should be equal', () => {
-      const results = compare(sampleLocal, sampleRemote);
+      const results = mergeLocalAndRemote(sampleLocal, sampleRemote);
       assert.deepEqual(results, sampleResults);
     });
   });
