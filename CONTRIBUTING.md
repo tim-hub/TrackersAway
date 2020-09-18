@@ -8,7 +8,7 @@
 ## Github Action
 
 1. git tag v1.1
-2. git push && git push -t
+2. git push && git push --tags
 
 # bugs
 
