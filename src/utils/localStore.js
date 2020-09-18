@@ -38,7 +38,7 @@ module.exports = {
   localStore: localStore,
   getSelectedOptions: () => {
     return localStore.get('options').filter(
-        (o)=>localStore.get('config').selected.includes(o.id)
+        (o)=>localStore.get('config').selected.includes(o.id),
     );
   },
   setOptionSha: (id, sha) => {

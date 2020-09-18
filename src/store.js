@@ -1,4 +1,5 @@
 const {createStore, combineReducers} = require('redux');
+const {logger} = require('./logger');
 
 const CONSTANTS = {
   TOGGLE_LOADING: 'TOGGLE_LOADING',
@@ -23,7 +24,7 @@ const FETCHING_STATE ={
 const ui = (state = defaultState, action)=> {
   switch (action.type) {
     case CONSTANTS.TOGGLE_LOADING:
-      console.log('change ui status'+action.isLoading + action.type);
+      logger.debug('change ui status'+action.isLoading + action.type);
       return Object.assign({}, state, {isLoading: !action.isLoading});
     case 'DECREMENT':
       return state;
@@ -35,7 +36,7 @@ const ui = (state = defaultState, action)=> {
 const fetching = (state = {state: 'init'}, action)=> {
   switch (action.type) {
     case CONSTANTS.UPDATE_STATE:
-      console.log('change fetching status'+action.state + action.type);
+      logger.debug('change fetching status'+action.state + action.type);
       return Object.assign({}, state, {state: action.state});
     default:
       return state;

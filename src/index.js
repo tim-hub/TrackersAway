@@ -1,10 +1,7 @@
 const {writeToFile, getLocalHosts, getHosts} = require('./utils/io');
 const {logger} = require('./utils/logger');
 const {mergeLocalAndRemote, getIndexes} = require('./utils/diff');
-const {localStore,
-  // getSelectedOptions,
-  // setOptionSha
-} = require('./utils/localStore');
+const {localStore} = require('./utils/localStore');
 const {hash} = require('./utils/hash');
 const {
   updateFetchingState,
@@ -28,7 +25,7 @@ const main = async (hostsPath = '/etc/hosts') => {
 
   let remoteHostsContent;
   const options = localStore.get('options');
-  console.log(options);
+  logger.debug('user options', options);
   const config = localStore.get('config');
   const urls = options.filter((o, i)=> config.selected.includes(i));
   const url = urls[0].raw;
@@ -52,7 +49,7 @@ const main = async (hostsPath = '/etc/hosts') => {
   const localHostsHash = hash(localHostsContent);
 
   if (remoteHash === localHostsHash) {
-    console.log('no update');
+    logger.debug('no update');
     updateFetchingState(FETCHING_STATE.noupdate);
   } else {
     // setOptionSha(getSelectedOptions()[0].id, remoteHash);
