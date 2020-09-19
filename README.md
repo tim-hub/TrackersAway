@@ -12,7 +12,7 @@ There is no way to be 100% not tracked online,
 The idea is from `AdAway` (an android ads blocker app), 
 and StevenBlack's hosts list.
 
-![trackers away 1](https://i.imgur.com/oUmEjnX.jpg)
+![trackers away 1.0.3](https://i.imgur.com/8RCKLAq.jpg)
 <!-- ![trackers away 2](https://i.imgur.com/rUyuVOU.jpg) -->
 
 
