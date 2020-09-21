@@ -1,5 +1,5 @@
 # Trackers Away
-[![CodeFactor](https://www.codefactor.io/repository/github/tim-hub/trackersaway/badge)](https://www.codefactor.io/repository/github/tim-hub/trackersaway)
+[![CodeFactor](https://www.codefactor.io/repository/github/tim-hub/trackersaway/badge)](https://www.codefactor.io/repository/github/tim-hub/trackersaway)[![GitHub All Releases](https://img.shields.io/github/downloads/tim-hub/trackersaway/total)](https://github.com/tim-hub/TrackersAway/releases/latest)
 - is an ads and trackers blocker
 - also an hosts file manager
 
