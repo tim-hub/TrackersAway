@@ -27,7 +27,8 @@ and StevenBlack's hosts list.
 - [contribute](/CONTRIBUTING.md)
 - [FAQ](/FAQ.md)
 
-## Hosts
+## References
 
 - [Google Hosts](https://github.com/googlehosts/hosts)
 - [StevenBlock](https://github.com/StevenBlack/hosts)
+- [Introduction Article about Trackers Away](https://tim.bai.uno/trackers-away-mac-os-ads-blocker-releasing-1-0-3-and-road-map/)
