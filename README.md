@@ -1,6 +1,12 @@
 # Trackers Away - Ads/Trackers Blocker and Hosts file Manager
 [![CodeFactor](https://www.codefactor.io/repository/github/tim-hub/trackersaway/badge)](https://www.codefactor.io/repository/github/tim-hub/trackersaway) [![GitHub All Releases](https://img.shields.io/github/downloads/tim-hub/trackersaway/total)](https://github.com/tim-hub/TrackersAway/releases/latest)
 
+## Installation
+
+`brew install tim-hub/trackers-away/trackers-away`
+
+---
+
 There are so many different tracking companies to
 track you and collect your online behavior data.
 There is no way to be 100% not tracked online,
