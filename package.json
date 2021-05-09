@@ -21,7 +21,7 @@
   "author": "github.com/tim-hub",
   "license": "Apache",
   "devDependencies": {
-    "acorn": "8.0.1",
+    "acorn": "8.2.4",
     "electron": "10.1.2",
     "electron-builder": "22.8.1",
     "eslint": "7.9.0",
