@@ -24,7 +24,7 @@
     "acorn": "8.0.1",
     "electron": "10.1.2",
     "electron-builder": "22.8.1",
-    "eslint": "7.9.0",
+    "eslint": "7.26.0",
     "eslint-config-google": "0.14.0",
     "mocha": "8.1.3"
   },
