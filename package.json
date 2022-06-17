@@ -22,7 +22,7 @@
   "license": "Apache",
   "devDependencies": {
     "acorn": "8.0.1",
-    "electron": "10.1.2",
+    "electron": "15.5.5",
     "electron-builder": "22.8.1",
     "eslint": "7.9.0",
     "eslint-config-google": "0.14.0",
